@@ -10,6 +10,7 @@ Usage: python3 cv/build.py [portfolio-url]   (defaults to the live Netlify site)
 """
 import html
 import json
+import re
 import pathlib
 import subprocess
 import sys
@@ -35,8 +36,13 @@ def phone_items(phone):
         return ""
     items = []
     for part in phone.split(" · "):
-        icon = "chat" if "whatsapp" in part.lower() else "phone"
-        items.append(icon_item(icon, html.escape(part)))
+        digits = re.sub(r"\D", "", part.split("(")[0])
+        if "whatsapp" in part.lower():
+            link = f'<a href="https://wa.me/{digits}">{html.escape(part)}</a>'
+            items.append(icon_item("chat", link))
+        else:
+            link = f'<a href="tel:+{digits}">{html.escape(part)}</a>'
+            items.append(icon_item("phone", link))
     return "\n    ".join(items)
 
 
@@ -68,6 +74,9 @@ def to_pdf(template_name, replacements, out_pdf):
     page = (CV / template_name).read_text().replace("{{ICONS}}", ICONS)
     for key, value in replacements.items():
         page = page.replace("{{" + key + "}}", value)
+    leftover = re.findall(r"\{\{[A-Z_]+\}\}", page)
+    if leftover:
+        sys.exit(f"{template_name}: unfilled placeholders {sorted(set(leftover))}")
     OUT.mkdir(exist_ok=True)
     tmp = OUT / (out_pdf.stem + ".html")
     tmp.write_text(page)
@@ -81,6 +90,7 @@ def to_pdf(template_name, replacements, out_pdf):
 
 to_pdf("template.html", {
     "PHONE": "", "COMPANY": "Remote software &amp; design company", "PORTFOLIO": portfolio_item(),
+    "PORTFOLIO_URL": html.escape(portfolio),
 }, ROOT / "public" / "assets" / "Kelvin-Sakyi-CV.pdf")
 
 if private:
@@ -88,6 +98,7 @@ if private:
         "PHONE": phone_items(private["phone"]),
         "COMPANY": html.escape(private["company"]),
         "PORTFOLIO": portfolio_item(),
+        "PORTFOLIO_URL": html.escape(portfolio),
     }, OUT / "Kelvin-Sakyi-CV-private.pdf")
     if private.get("references"):
         to_pdf("references-template.html", {

@@ -29,6 +29,8 @@ a { color: inherit; text-decoration: none; }
 .contact { margin-top: 9pt; display: flex; flex-wrap: wrap; gap: 4pt 14pt; font-size: 8.6pt; color: #c9ccc9; }
 .contact li { display: inline-flex; align-items: center; gap: 4pt; }
 .contact .ic { color: #e8c547; }
+.contact a { text-decoration: underline; text-decoration-color: rgba(232, 197, 71, 0.7); text-decoration-thickness: 0.8pt; text-underline-offset: 2pt; }
+.item a { text-decoration: underline; text-decoration-color: #c9a520; text-decoration-thickness: 0.8pt; text-underline-offset: 2pt; }
 
 /* ---------- Sections ---------- */
 section { margin-top: 12pt; }
