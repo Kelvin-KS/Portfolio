@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How this site was tested · Kelvin Sakyi</title>
-  <meta name="description" content="The full test report for Kelvin Sakyi's portfolio: 41 test cases, 199 recorded results across 8 device and browser setups, and 13 issues found, fixed and retested.">
+  <meta name="description" content="The full test report for Kelvin Sakyi's portfolio: 41 test cases, 199 recorded results across 8 device and browser setups, and 14 issues found, fixed and retested.">
   <meta name="theme-color" content="#121417">
   <link rel="canonical" href="https://kelvin-sakyi.netlify.app/how-this-site-was-tested/">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://kelvin-sakyi.netlify.app/how-this-site-was-tested/">
   <meta property="og:title" content="How this site was tested · Kelvin Sakyi">
-  <meta property="og:description" content="41 test cases, 199 results, 13 issues found and fixed. Lighthouse 98 · 100 · 100 · 100.">
+  <meta property="og:description" content="41 test cases, 199 results, 14 issues found and fixed. Lighthouse 98 · 100 · 100 · 100.">
   <meta property="og:image" content="https://kelvin-sakyi.netlify.app/assets/og-image.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
@@ -52,14 +52,14 @@
     <section class="report-hero">
       <div class="report-scan" aria-hidden="true"></div>
       <div class="container">
-        <p class="eyebrow">Test report · kelvin-sakyi.netlify.app · updated 2026-09-28</p>
+        <p class="eyebrow">Test report · kelvin-sakyi.netlify.app · updated 2026-09-29</p>
         <h1>How this site was tested</h1>
         <p class="section-intro">I don't just say this site works. Here's the evidence: the test plan, every device it ran on, the bugs it caught, and how each one was fixed and retested.</p>
         <dl class="scope report-scope">
           <div><dt>Test cases</dt><dd><span data-count="41">41</span></dd></div>
           <div><dt>Results recorded</dt><dd><span data-count="199">199</span></dd></div>
           <div><dt>Device setups</dt><dd><span data-count="8">8</span></dd></div>
-          <div><dt>Issues fixed</dt><dd><span data-count="13">13</span>/13</dd></div>
+          <div><dt>Issues fixed</dt><dd><span data-count="14">14</span>/14</dd></div>
         </dl>
         <p class="lighthouse"><span class="mono">Lighthouse (mobile)</span> <b data-count="98">98</b> Performance · <b data-count="100">100</b> Accessibility · <b data-count="100">100</b> Best Practices · <b data-count="100">100</b> SEO</p>
       </div>
@@ -122,7 +122,7 @@
       <div class="container">
         <header class="section-head">
           <p class="eyebrow">Issues found &amp; fixed</p>
-          <h2 id="issues-title">13 bugs caught before a visitor could</h2>
+          <h2 id="issues-title">14 bugs caught before a visitor could</h2>
           <p class="section-intro">Every issue follows the same cycle: found, documented, fixed, then retested. The fail is kept on record rather than quietly overwritten.</p>
         </header>
         <div class="findings">
@@ -204,6 +204,12 @@
         <dl><div><dt>Found</dt><dd>With the phone font size increased (130%), the header on ~412px-wide phones (Galaxy A15, A32) overflowed: the Menu button ended at 432px on a 412px screen, so it could not be tapped. Also failed on 320px screens.</dd></div><div><dt>Cause</dt><dd>Brand text, the labelled theme button and the Menu button did not fit on one line once text scaled up; &#x27;/ portfolio&#x27; was only hidden below 400px.</dd></div><div><dt>Fix</dt><dd>Under 520px the theme button becomes icon-only (full name kept for screen readers) and &#x27;/ portfolio&#x27; is hidden.</dd></div><div><dt>Retest</dt><dd>Deployed and retested on the live site at 320, 360 and 412px with 130% and 150% text: Menu fully on screen every time. TC-36 now passes on Galaxy A15 and A32 (emulated); regression run on S22, iPhone 13 and A15 found no new failures. Confirmed by Kelvin on a real Galaxy A32 with the system font at maximum.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check (Chrome device mode)</p>
       </article>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-14</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
+        <h3>Scroll fade-in timing different on the test report page</h3>
+        <dl><div><dt>Found</dt><dd>Comparing the homepage and the test report on laptop and phone, the fade-in on the report felt later and inconsistent. Measured: a ~500px element with its top 20% into the screen had started fading on the homepage but not on the report.</dd></div><div><dt>Cause</dt><dd>The report&#x27;s helper used &#x27;threshold || 0.2&#x27;. In JavaScript 0 counts as empty, so the intended threshold of 0 became 0.2 and tall elements (device table, issue cards) waited until 20% of their height was visible.</dd></div><div><dt>Fix</dt><dd>Only fall back to 0.2 when no threshold is given, so 0 is respected.</dd></div><div><dt>Retest</dt><dd>Same measurement on the live site: the report&#x27;s device table now starts fading at the same point as on the homepage. Zero console errors.</dd></div></dl>
+        <p class="finding-by">Found by: Kelvin (visual comparison across pages and devices)</p>
+      </article>
         </div>
       </div>
     </section>
@@ -253,6 +259,7 @@
           <li><h3>Question a bad result before "fixing" the site</h3><p>Lighthouse first scored Performance 63. It named browser extensions as the cause. Re-run in a clean Incognito window: 98. Nothing needed changing.</p></li>
           <li><h3>Automation can be wrong too</h3><p>The automated run reported four failures that turned out to be mistakes in the test script (a hidden spam-trap field, reading a result too early, a desktop touch setting and where keyboard focus started). Each was investigated and re-run before anything was recorded; none are counted as site bugs.</p></li>
           <li><h3>Emulation is not a real phone</h3><p>Copying to the clipboard and opening the mail app could only be proven on a real Galaxy A32. That's also why a real iPhone Safari run is still on the list.</p></li>
+          <li><h3>Eyes catch what checks don't</h3><p>Every automated check passed, yet the fade-in felt later on this page than on the homepage. I noticed it by comparing the two by eye; measuring confirmed it (F-14). Automation checks what you tell it to. Manual QA notices what nobody wrote down.</p></li>
           <li><h3>Bugs live at the edges</h3><p>F-13 only appeared with a large system font on mid-width phones. Normal settings never showed it. It was found, fixed, retested at three screen sizes, regression-tested, then confirmed on a real phone at maximum font size.</p></li>
         </ol>
       </div>

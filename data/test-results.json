@@ -1,5 +1,5 @@
 {
- "exported": "2026-09-28",
+ "exported": "2026-09-29",
  "results": [
   {
    "area": "Loading & navigation",
@@ -2308,6 +2308,15 @@
    "retest": "Deployed and retested on the live site at 320, 360 and 412px with 130% and 150% text: Menu fully on screen every time. TC-36 now passes on Galaxy A15 and A32 (emulated); regression run on S22, iPhone 13 and A15 found no new failures. Confirmed by Kelvin on a real Galaxy A32 with the system font at maximum.",
    "status": "fixed",
    "title": "Menu button pushed off-screen with large text"
+  },
+  "F-14": {
+   "title": "Scroll fade-in timing different on the test report page",
+   "found": "Comparing the homepage and the test report on laptop and phone, the fade-in on the report felt later and inconsistent. Measured: a ~500px element with its top 20% into the screen had started fading on the homepage but not on the report.",
+   "cause": "The report's helper used 'threshold || 0.2'. In JavaScript 0 counts as empty, so the intended threshold of 0 became 0.2 and tall elements (device table, issue cards) waited until 20% of their height was visible.",
+   "fix": "Only fall back to 0.2 when no threshold is given, so 0 is respected.",
+   "retest": "Same measurement on the live site: the report's device table now starts fading at the same point as on the homepage. Zero console errors.",
+   "foundBy": "Kelvin (visual comparison across pages and devices)",
+   "status": "fixed"
   }
  }
 }

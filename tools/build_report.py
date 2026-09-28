@@ -313,6 +313,7 @@ page = f"""<!doctype html>
           <li><h3>Question a bad result before "fixing" the site</h3><p>Lighthouse first scored Performance 63. It named browser extensions as the cause. Re-run in a clean Incognito window: 98. Nothing needed changing.</p></li>
           <li><h3>Automation can be wrong too</h3><p>The automated run reported four failures that turned out to be mistakes in the test script (a hidden spam-trap field, reading a result too early, a desktop touch setting and where keyboard focus started). Each was investigated and re-run before anything was recorded; none are counted as site bugs.</p></li>
           <li><h3>Emulation is not a real phone</h3><p>Copying to the clipboard and opening the mail app could only be proven on a real Galaxy A32. That's also why a real iPhone Safari run is still on the list.</p></li>
+          <li><h3>Eyes catch what checks don't</h3><p>Every automated check passed, yet the fade-in felt later on this page than on the homepage. I noticed it by comparing the two by eye; measuring confirmed it (F-14). Automation checks what you tell it to. Manual QA notices what nobody wrote down.</p></li>
           <li><h3>Bugs live at the edges</h3><p>F-13 only appeared with a large system font on mid-width phones. Normal settings never showed it. It was found, fixed, retested at three screen sizes, regression-tested, then confirmed on a real phone at maximum font size.</p></li>
         </ol>
       </div>
