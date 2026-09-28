@@ -199,6 +199,15 @@
   });
 
   /* ---------- Scroll reveal (skipped when motion is reduced) ---------- */
+  // Cards that share a row or grid come in one after another (at most 4 steps of 90ms).
+  function stagger(els) {
+    els.forEach(function (el) {
+      var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.classList.contains('reveal'); });
+      var i = sibs.indexOf(el);
+      if (i > 0) el.style.setProperty('--reveal-delay', Math.min(i, 4) * 90 + 'ms');
+    });
+  }
+
   var revealTargets = document.querySelectorAll('.section-head, .flow-step, .catch, .toolkit-block, .case, .lab-app, .lab-session, .review-col, .project, .next, .timeline li, .contact-form');
   if (!motionQuery.matches && 'IntersectionObserver' in window) {
     var revealObserver = new IntersectionObserver(function (entries) {
@@ -208,11 +217,15 @@
           revealObserver.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -8% 0px' });
-    revealTargets.forEach(function (el) {
-      el.classList.add('reveal');
-      revealObserver.observe(el);
-    });
+    }, { rootMargin: '0px 0px -15% 0px' });
+    revealTargets.forEach(function (el) { el.classList.add('reveal'); });
+    try {
+      stagger(Array.prototype.slice.call(revealTargets));
+      revealTargets.forEach(function (el) { revealObserver.observe(el); });
+    } catch (err) {
+      // Safety net: if the reveal setup fails for any reason, never leave content invisible.
+      revealTargets.forEach(function (el) { el.classList.add('is-in'); });
+    }
   }
 
   /* ---------- Live checks: real tests of this page, run on the visitor's device ---------- */

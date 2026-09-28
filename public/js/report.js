@@ -45,11 +45,20 @@
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce || !('IntersectionObserver' in window)) return;
 
-  function onView(els, fn, threshold) {
+  function onView(els, fn, threshold, margin) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { fn(en.target); io.unobserve(en.target); } });
-    }, { threshold: threshold || 0.2 });
+    }, { threshold: threshold || 0.2, rootMargin: margin || '0px' });
     els.forEach(function (el) { io.observe(el); });
+  }
+
+  // Cards that share a row or grid come in one after another (at most 4 steps of 90ms).
+  function stagger(els) {
+    els.forEach(function (el) {
+      var sibs = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.classList.contains('reveal'); });
+      var i = sibs.indexOf(el);
+      if (i > 0) el.style.setProperty('--reveal-delay', Math.min(i, 4) * 90 + 'ms');
+    });
   }
 
   // Fade content in as it scrolls into view (and draw the headings' calibration marks).
@@ -58,7 +67,13 @@
     document.querySelectorAll('.section-head, .method, .table-wrap, .finding, .evidence, .lessons li, details.area'),
     function (el) { return !el.closest('details'); });
   reveal.forEach(function (el) { el.classList.add('reveal'); });
-  onView(reveal, function (el) { el.classList.add('is-in'); }, 0.08);
+  try {
+    stagger(reveal);
+    onView(reveal, function (el) { el.classList.add('is-in'); }, 0, '0px 0px -15% 0px');
+  } catch (err) {
+    // Safety net: if the reveal setup fails for any reason, never leave content invisible.
+    reveal.forEach(function (el) { el.classList.add('is-in'); });
+  }
 
   // Count numbers up. The real value stays in the HTML until counting actually starts.
   onView(Array.prototype.slice.call(document.querySelectorAll('[data-count]')), function (el) {

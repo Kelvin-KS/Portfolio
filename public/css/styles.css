@@ -593,7 +593,11 @@ a:hover { text-decoration-color: var(--accent); }
 @media (min-width: 700px) { .footer-inner { grid-template-columns: auto 1fr; gap: 24px; } .footer-inner p:last-child { text-align: right; } }
 
 /* ---------- Scroll reveal (only when JS runs and motion is allowed) ---------- */
-.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
+.js .reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+  transition-delay: var(--reveal-delay, 0ms);
+}
 .js .reveal.is-in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
