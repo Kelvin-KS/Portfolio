@@ -194,7 +194,15 @@ a:hover { text-decoration-color: var(--accent); }
 .theme-toggle, .menu-toggle { white-space: nowrap; flex-shrink: 0; }
 .menu-toggle { min-width: 64px; justify-content: center; }
 .theme-toggle:hover, .menu-toggle:hover { border-color: var(--line-strong); }
-@media (max-width: 400px) { .brand-sub, .brand-slash { display: none; } }
+/* Small phones (and any phone with a large system font): keep the header on one line.
+   The theme button keeps its full name for screen readers via aria-label. */
+@media (max-width: 519px) {
+  .brand-sub, .brand-slash { display: none; }
+  .theme-label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .theme-toggle { min-width: 44px; min-height: 44px; justify-content: center; padding: 8px; }
+  .theme-dot { width: 16px; height: 16px; }
+  .menu-toggle { min-height: 44px; }
+}
 .theme-dot {
   width: 12px; height: 12px; border-radius: 50%;
   border: 1.5px solid var(--ink);
