@@ -9,6 +9,11 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Kelvin Sakyi · Software Engineer, QA &amp; AI-Assisted Web Development">
   <meta property="og:description" content="I build, test and refine web experiences. AI speeds up the build. Hands-on QA makes sure it actually works.">
+  <meta property="og:image" content="/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preload" as="image" href="/assets/hero-1200.webp" imagesrcset="/assets/hero-800.webp 800w, /assets/hero-1200.webp 1200w, /assets/hero-1920.webp 1920w" imagesizes="100vw">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,6 +24,13 @@
   <script src="/js/qa-lab.js" defer></script>
 </head>
 <body>
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <span class="loader-mark">KS</span>
+      <span class="loader-bar"><span></span></span>
+      <span class="loader-text">Calibrating</span>
+    </div>
+  </div>
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -51,10 +63,22 @@
 
     <!-- HERO -->
     <section class="hero" id="top" aria-labelledby="hero-name">
+      <div class="hero-media" aria-hidden="true">
+        <img class="hero-img" src="/assets/hero-1200.webp" srcset="/assets/hero-800.webp 800w, /assets/hero-1200.webp 1200w, /assets/hero-1920.webp 1920w" sizes="100vw" alt="" width="1920" height="1080" fetchpriority="high">
+        <div class="hero-shade"></div>
+        <div class="hero-grid-glow"></div>
+        <div class="hero-scan"></div>
+      </div>
+      <div class="hud" aria-hidden="true">
+        <span class="hud-tl">5.60° N · 0.19° W · Accra</span>
+        <span class="hud-tr" id="hud-time">GMT --:--:--</span>
+        <span class="hud-bl" id="hud-view">Viewport ----</span>
+        <span class="hud-br">Concept visual · AI-generated</span>
+      </div>
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow">Software Engineer · Quality Assurance &amp; AI-Assisted Web Development</p>
-          <h1 class="hero-name" id="hero-name"><span>Kelvin</span> <span>Sakyi</span></h1>
+          <h1 class="hero-name" id="hero-name"><span class="sr-only">Kelvin Sakyi</span><span class="hero-word" aria-hidden="true" data-decode>Kelvin</span><span class="hero-word" aria-hidden="true" data-decode>Sakyi</span></h1>
           <p class="hero-line">I build, test, and refine web experiences.</p>
           <p class="hero-sub">AI speeds up the build. Hands-on QA makes sure it actually works.</p>
           <div class="hero-cta">
@@ -64,7 +88,7 @@
           <p class="hero-meta">Accra, Ghana · Working remotely · Open to junior Software Engineer and Software Engineer in Test roles</p>
         </div>
 
-        <aside class="session-card" aria-labelledby="session-title">
+        <aside class="session-card bracket" aria-labelledby="session-title">
           <div class="session-head">
             <h2 class="session-title" id="session-title">Live check: this page, on your device</h2>
             <span class="chip chip--run" id="session-status">Ready</span>
@@ -85,10 +109,10 @@
 
       <div class="container">
         <dl class="scope">
-          <div><dt>Websites</dt><dd>10+</dd></div>
-          <div><dt>UI mockups</dt><dd>10+</dd></div>
-          <div><dt>Flyers</dt><dd>30+</dd></div>
-          <div><dt>Logos</dt><dd>8+</dd></div>
+          <div><dt>Websites</dt><dd><span data-count="10">10</span>+</dd></div>
+          <div><dt>UI mockups</dt><dd><span data-count="10">10</span>+</dd></div>
+          <div><dt>Flyers</dt><dd><span data-count="30">30</span>+</dd></div>
+          <div><dt>Logos</dt><dd><span data-count="8">8</span>+</dd></div>
         </dl>
         <p class="scope-note">Tested and reviewed since October 2024. Approximate totals; client names withheld.</p>
       </div>
@@ -103,7 +127,7 @@
           <p class="section-intro">I use AI heavily, and deliberately. Each tool has one job, and nothing ships until I've tested it myself.</p>
         </header>
 
-        <ol class="flow">
+        <ol class="flow" id="flow">
           <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Understand</h3><p>Requirements, the client's vision, and what "done" means.</p></li>
           <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Validate the flow</h3><p>Check mockups before design moves on: does the journey make sense, and are the key states covered?</p></li>
           <li class="flow-step"><span class="flow-who">AI · ChatGPT</span><h3>Structure</h3><p>Turn my notes into a precise, complete prompt.</p></li>
@@ -112,7 +136,10 @@
           <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Test &amp; judge</h3><p>Real devices, DevTools and test cases. Accept, redirect or reject.</p></li>
           <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Validate</h3><p>Retest until it meets the requirement and the client's vision.</p></li>
         </ol>
-        <p class="flow-loop"><span class="mono">Test &amp; judge → Build</span> repeats until it passes.</p>
+        <div class="flow-foot">
+          <p class="flow-loop"><span class="mono">Test &amp; judge → Build</span> repeats until it passes.</p>
+          <button class="btn btn-small" type="button" id="flow-replay">Replay signal</button>
+        </div>
 
         <div class="catch">
           <h3 class="catch-title">What I catch that AI misses</h3>
@@ -162,7 +189,7 @@
           <p class="section-intro">Professional project for a client of my employer. Names, data and identifying details are left out because of confidentiality.</p>
         </header>
 
-        <article class="case">
+        <article class="case bracket">
           <div class="case-top">
             <div>
               <p class="case-kind">Education · Web platform</p>
@@ -238,7 +265,7 @@
         </header>
 
         <div class="lab">
-          <div class="lab-app">
+          <div class="lab-app bracket" id="lab-app">
             <div class="app-head">
               <span class="mono">bmi-calculator</span>
               <div class="build-switch" role="radiogroup" aria-label="App build">
@@ -261,7 +288,7 @@
             <p class="app-note">Rebuilt version · demo only, not medical advice. Categories follow the WHO adult ranges.</p>
           </div>
 
-          <div class="lab-session">
+          <div class="lab-session bracket">
             <div class="summary" aria-live="polite">
               <div><span class="sum-n" id="sum-total">6</span><span class="sum-l">Total</span></div>
               <div class="is-pass"><span class="sum-n" id="sum-pass">0</span><span class="sum-l">Passed</span></div>
@@ -308,7 +335,7 @@
           </div>
           <div class="review-col">
             <h3>Finished design review</h3>
-            <div class="review-card">
+            <div class="review-card bracket">
               <p class="review-label">Illustrative example, not a real client review</p>
               <p class="review-subject">Event flyer</p>
               <ul class="criteria">
@@ -336,21 +363,25 @@
 
         <ul class="projects">
           <li class="project">
+            <img class="project-shot" src="/assets/project-tictactoe.webp" alt="Screenshot: Tic-Tac-Toe start screen with two player name fields" width="640" height="400" loading="lazy" decoding="async">
             <h3>Tic-Tac-Toe</h3>
-            <p>Two-player browser game with turn logic, and win and tie detection.</p>
+            <p>Two named players, turn logic, and win and tie detection.</p>
             <div class="project-links"><a href="https://kelvin-ks.github.io/Tic-Tac-Toe/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/Tic-Tac-Toe" rel="noopener">Code</a></div>
           </li>
           <li class="project">
+            <img class="project-shot" src="/assets/project-todo.webp" alt="Screenshot: To-Do List app with a projects sidebar, task counters and filters" width="640" height="400" loading="lazy" decoding="async">
             <h3>To-Do List</h3>
-            <p>Projects and to-dos organised in a sidebar, with search.</p>
+            <p>Projects, priorities and due dates, with search and filters for active, completed and overdue tasks.</p>
             <div class="project-links"><a href="https://kelvin-ks.github.io/todo-list/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/todo-list" rel="noopener">Code</a></div>
           </li>
           <li class="project">
+            <img class="project-shot" src="/assets/project-library.webp" alt="Screenshot: Library app showing book cards marked read or not read" width="640" height="400" loading="lazy" decoding="async">
             <h3>Library</h3>
             <p>Add books, remove them, and mark them as read.</p>
             <div class="project-links"><a href="https://kelvin-ks.github.io/MyLibrary/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/MyLibrary" rel="noopener">Code</a></div>
           </li>
           <li class="project">
+            <img class="project-shot" src="/assets/project-calculator.webp" alt="Screenshot: Calculator with number and operator buttons" width="640" height="400" loading="lazy" decoding="async">
             <h3>Calculator</h3>
             <p>An on-screen calculator for basic arithmetic, in plain JavaScript.</p>
             <div class="project-links"><a href="https://kelvin-ks.github.io/Project-calculator/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/Project-calculator" rel="noopener">Code</a></div>

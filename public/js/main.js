@@ -309,6 +309,170 @@
 
   rerunBtn.addEventListener('click', runChecks);
   themeBtn.addEventListener('click', function () { setTimeout(runChecks, 50); });
-  if (document.readyState === 'complete') runChecks();
-  else window.addEventListener('load', runChecks);
+
+  var loaderShown = root.classList.contains('show-loader');
+  function afterLoader(fn) { setTimeout(fn, loaderShown ? 1300 : 200); }
+  if (document.readyState === 'complete') afterLoader(runChecks);
+  else window.addEventListener('load', function () { afterLoader(runChecks); });
+
+  /* ================= Motion layer ================= */
+  var reduce = motionQuery.matches;
+  var finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+  /* Loader: tap or press any key to skip */
+  var loader = document.getElementById('loader');
+  if (loader && loaderShown) {
+    var removeLoader = function () {
+      if (loader.parentNode) loader.parentNode.removeChild(loader);
+      root.classList.remove('show-loader');
+    };
+    var skip = function () { loader.classList.add('is-done'); setTimeout(removeLoader, 320); };
+    loader.addEventListener('click', skip);
+    document.addEventListener('keydown', skip, { once: true });
+    loader.addEventListener('animationend', function (e) {
+      if (e.target === loader) removeLoader();
+    });
+    // Failsafe: timers keep running even when CSS animations don't,
+    // so the loader can never be left covering the page.
+    setTimeout(removeLoader, 1600);
+  }
+
+  /* Name "decodes" into place, like a system booting */
+  function decode(el, delay) {
+    var target = el.textContent;
+    var glyphs = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789#/<>';
+    // Timed by the clock, not by frame count, so it always finishes on schedule
+    // even when the browser slows timers down (background tabs, low battery).
+    var settleAt = target.split('').map(function (_, i) { return 6 + i * 3; });
+    var start = 0;
+    var frame = 0;
+    setTimeout(function tick() {
+      if (!start) start = Date.now();
+      frame = Math.floor((Date.now() - start) / 38);
+      var frag = document.createDocumentFragment();
+      var settled = '';
+      var done = true;
+      for (var i = 0; i < target.length; i++) {
+        if (frame >= settleAt[i]) { settled += target[i]; continue; }
+        done = false;
+        if (settled) { frag.appendChild(document.createTextNode(settled)); settled = ''; }
+        var span = document.createElement('span');
+        span.className = 'dc';
+        span.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+        frag.appendChild(span);
+      }
+      if (settled) frag.appendChild(document.createTextNode(settled));
+      el.replaceChildren(frag);
+      if (!done) setTimeout(tick, 38);
+    }, delay);
+  }
+  if (!reduce) {
+    document.querySelectorAll('[data-decode]').forEach(function (el, i) {
+      decode(el, (loaderShown ? 1100 : 150) + i * 180);
+    });
+  }
+
+  /* HUD: live time in Accra (GMT) and the viewport size */
+  var hudTime = document.getElementById('hud-time');
+  var hudView = document.getElementById('hud-view');
+  function pad(n) { return n < 10 ? '0' + n : String(n); }
+  function tickHud() {
+    var d = new Date();
+    hudTime.textContent = 'GMT ' + pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()) + ':' + pad(d.getUTCSeconds());
+    hudView.textContent = 'Viewport ' + window.innerWidth + ' × ' + window.innerHeight;
+  }
+  if (hudTime && hudView) {
+    tickHud();
+    setInterval(tickHud, 1000);
+    window.addEventListener('resize', tickHud);
+  }
+
+  /* Grid lights up around the cursor (desktop only) */
+  var hero = document.querySelector('.hero');
+  var glow = document.querySelector('.hero-grid-glow');
+  if (hero && glow && finePointer && !reduce) {
+    var raf = null;
+    hero.addEventListener('pointermove', function (e) {
+      if (raf) return;
+      raf = requestAnimationFrame(function () {
+        var r = hero.getBoundingClientRect();
+        glow.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        glow.style.setProperty('--my', (e.clientY - r.top) + 'px');
+        raf = null;
+      });
+    });
+    hero.addEventListener('pointerleave', function () {
+      glow.style.setProperty('--mx', '-500px');
+      glow.style.setProperty('--my', '-500px');
+    });
+  }
+
+  /* Stats count up when they come into view */
+  var counters = document.querySelectorAll('[data-count]');
+  if (!reduce && 'IntersectionObserver' in window) {
+    var countObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var end = Number(el.getAttribute('data-count'));
+        el.textContent = '0';
+        var start = performance.now();
+        var dur = 1100;
+        (function step(now) {
+          var t = Math.min(1, (now - start) / dur);
+          var eased = 1 - Math.pow(1 - t, 3);
+          el.textContent = Math.round(end * eased);
+          if (t < 1) requestAnimationFrame(step);
+        })(start);
+        countObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    // The real numbers stay in the HTML until the count-up actually starts,
+    // so nobody ever sees "0+" (no JS, slow scroll, or half off-screen).
+    counters.forEach(function (el) { countObserver.observe(el); });
+  }
+
+  /* Workflow: a signal passes through each step and holds at my checkpoints */
+  var flow = document.getElementById('flow');
+  var replayBtn = document.getElementById('flow-replay');
+  var steps = flow ? Array.prototype.slice.call(flow.children) : [];
+  var signalTimer = null;
+  function runSignal() {
+    clearTimeout(signalTimer);
+    steps.forEach(function (s) { s.classList.remove('is-signal', 'is-done'); });
+    var i = 0;
+    (function next() {
+      if (i > 0) { steps[i - 1].classList.remove('is-signal'); steps[i - 1].classList.add('is-done'); }
+      if (i >= steps.length) return;
+      var step = steps[i];
+      step.classList.add('is-signal');
+      i++;
+      signalTimer = setTimeout(next, step.classList.contains('is-human') ? 1100 : 550);
+    })();
+  }
+  if (flow && !reduce) {
+    replayBtn.addEventListener('click', runSignal);
+    if ('IntersectionObserver' in window) {
+      var flowObserver = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { setTimeout(runSignal, 600); flowObserver.disconnect(); }
+      }, { threshold: 0.35 });
+      flowObserver.observe(flow);
+    }
+  } else if (replayBtn) {
+    replayBtn.hidden = true;
+  }
+
+  /* Magnetic primary buttons (mouse and trackpad only) */
+  if (finePointer && !reduce) {
+    document.querySelectorAll('.btn-primary').forEach(function (btn) {
+      btn.classList.add('is-magnetic');
+      btn.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var x = (e.clientX - r.left - r.width / 2) / (r.width / 2);
+        var y = (e.clientY - r.top - r.height / 2) / (r.height / 2);
+        btn.style.transform = 'translate(' + (x * 5).toFixed(1) + 'px,' + (y * 4).toFixed(1) + 'px)';
+      });
+      btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+    });
+  }
 })();

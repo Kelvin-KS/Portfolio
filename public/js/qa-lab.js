@@ -10,6 +10,7 @@
   var heightInput = document.getElementById('bmi-height');
   var appForm = document.getElementById('bmi-form');
   var out = document.getElementById('bmi-out');
+  var appPanel = document.getElementById('lab-app');
 
   function category(bmi) {
     // v1.0 ships with a boundary bug: exactly 18.5 is treated as underweight.
@@ -204,6 +205,8 @@
   function execute(t) {
     t.status = 'running';
     t.actual = '';
+    t.el.li.classList.remove('flash-fail', 'flash-pass');
+    appPanel.classList.add('is-scanning');
     renderTest(t);
     renderSummary();
     return typeInto(weightInput, t.w)
@@ -224,6 +227,9 @@
           t.el.details.hidden = false;
           t.el.toggle.setAttribute('aria-expanded', 'true');
         }
+        appPanel.classList.remove('is-scanning');
+        void t.el.li.offsetWidth; // restart the flash animation
+        t.el.li.classList.add(t.status === 'pass' ? 'flash-pass' : 'flash-fail');
         renderTest(t);
         renderSummary();
         renderBug();
