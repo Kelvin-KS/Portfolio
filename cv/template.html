@@ -4,146 +4,119 @@
 <meta charset="utf-8">
 <title>Kelvin Sakyi · CV</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
-<style>
-  @page { size: A4; margin: 14mm 15mm 14mm 15mm; }
-  * { box-sizing: border-box; }
-  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-  body { margin: 0; font: 400 9.6pt/1.45 "Instrument Sans", Arial, sans-serif; color: #15171a; }
-  h1, h2, h3, p, ul { margin: 0; padding: 0; }
-  ul { list-style: none; }
-
-  header { padding-bottom: 10pt; border-bottom: 2.5pt solid #e8c547; margin-bottom: 12pt; }
-  .name { font: 800 26pt/1 "Archivo", Arial, sans-serif; font-stretch: 118%; letter-spacing: -0.2pt; text-transform: uppercase; }
-  .title { margin-top: 5pt; font: 600 10.5pt/1.3 "Instrument Sans", Arial, sans-serif; }
-  .contact { margin-top: 6pt; display: flex; flex-wrap: wrap; gap: 2pt 14pt; font-size: 8.8pt; color: #3d4144; }
-  .contact a { color: inherit; text-decoration: none; }
-
-  section { margin-top: 11pt; }
-  h2 {
-    /* no letter-spacing: CV scanners (ATS) would read spaced letters as "P R O F I L E" */
-    font: 700 8.6pt/1 "Instrument Sans", Arial, sans-serif; text-transform: uppercase;
-    color: #7a5c00; padding-bottom: 4pt; border-bottom: 0.6pt solid #d6d3ca; margin-bottom: 7pt;
-    break-after: avoid;
-  }
-  section { break-inside: auto; }
-  .skills { break-inside: avoid; }
-  .summary { font-size: 9.8pt; }
-
-  .role { margin-bottom: 9pt; break-inside: avoid; }
-  .role-head { display: flex; justify-content: space-between; gap: 12pt; align-items: baseline; }
-  .role h3 { font: 700 10pt/1.3 "Instrument Sans", Arial, sans-serif; }
-  .where { color: #3d4144; font-size: 9.2pt; }
-  .when { font: 500 8.2pt/1.3 "JetBrains Mono", monospace; color: #585c59; white-space: nowrap; }
-  .role ul { margin-top: 3pt; }
-  .role li { position: relative; padding-left: 10pt; margin-top: 1.6pt; }
-  .role li::before { content: ""; position: absolute; left: 1pt; top: 5.2pt; width: 4pt; height: 1.3pt; background: #c9a520; }
-  .note { margin-top: 3pt; font-size: 8.6pt; color: #585c59; font-style: italic; }
-
-  .skills { display: grid; grid-template-columns: 30mm 1fr; gap: 4pt 10pt; }
-  .skills dt { font-weight: 700; }
-  .skills dd { margin: 0; }
-
-  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16pt; }
-  .item { margin-bottom: 5pt; break-inside: avoid; }
-  .item b { font-weight: 700; }
-  .item span { display: block; color: #3d4144; font-size: 9pt; }
-</style>
+<link rel="stylesheet" href="../cv.css">
 </head>
 <body>
+{{ICONS}}
 
-<header>
+<header class="band">
+  <p class="eyebrow">Curriculum vitae</p>
   <h1 class="name">Kelvin Sakyi</h1>
   <p class="title">Software Engineer · Quality Assurance &amp; AI-Assisted Web Development</p>
-  <p class="contact">
-    <span>Accra, Ghana · Open to remote</span>
-    <a href="mailto:sakyikelvin20@gmail.com">sakyikelvin20@gmail.com</a>
+  <ul class="contact">
+    <li><svg class="ic"><use href="#i-pin"/></svg>Accra, Ghana · Open to remote</li>
+    <li><svg class="ic"><use href="#i-mail"/></svg><a href="mailto:sakyikelvin20@gmail.com">sakyikelvin20@gmail.com</a></li>
     {{PHONE}}
-    <a href="https://github.com/Kelvin-KS">github.com/Kelvin-KS</a>
-    <a href="https://www.linkedin.com/in/kelvin-sakyi-88b411317/">linkedin.com/in/kelvin-sakyi-88b411317</a>
+    <li><svg class="ic"><use href="#i-github"/></svg><a href="https://github.com/Kelvin-KS">github.com/Kelvin-KS</a></li>
+    <li><svg class="ic"><use href="#i-linkedin"/></svg><a href="https://www.linkedin.com/in/kelvin-sakyi-88b411317/">linkedin.com/in/kelvin-sakyi-88b411317</a></li>
     {{PORTFOLIO}}
-  </p>
+  </ul>
 </header>
 
 <section>
-  <h2>Profile</h2>
+  <h2><svg class="ic"><use href="#i-user"/></svg>Profile</h2>
   <p class="summary">Software Engineer who builds, tests and refines web experiences. Two years of hands-on quality assurance across websites, UI mockups and graphic design, combined with AI-assisted web development: I set the direction and requirements, build with AI tools, then test the result on real devices before signing it off. Comfortable working remotely with a distributed team. Growing towards test automation and security testing.</p>
+  <div class="stats">
+    <div><b>10+</b><span>Websites tested</span></div>
+    <div><b>10+</b><span>UI mockups validated</span></div>
+    <div><b>30+</b><span>Flyers reviewed</span></div>
+    <div><b>8+</b><span>Logos reviewed</span></div>
+  </div>
+  <p class="stats-note">Approximate totals since October 2024.</p>
 </section>
 
 <section>
-  <h2>Experience</h2>
+  <h2><svg class="ic"><use href="#i-briefcase"/></svg>Experience</h2>
+  <div class="timeline">
 
-  <div class="role">
-    <div class="role-head">
-      <div><h3>Software Engineer</h3><p class="where">{{COMPANY}} · Remote</p></div>
-      <p class="when">Oct 2025 – Present</p>
+    <div class="role current">
+      <div class="role-head">
+        <div><h3>Software Engineer</h3><p class="where">{{COMPANY}} · Remote</p></div>
+        <p class="when">Oct 2025 – Present</p>
+      </div>
+      <ul>
+        <li>Execute manual test cases and record results, defects and retests in the company's structured QA reporting dashboard; document bugs with screenshots and track work in Trello.</li>
+        <li>Cover functional, UI, navigation, form validation, responsive, cross-browser and regression testing on real Android and iOS phones and tablets, and in Chrome, Safari, Firefox, Brave and Opera.</li>
+        <li>Diagnose issues with Chrome DevTools (device mode, console, network, application, performance) and Lighthouse audits.</li>
+        <li>Build web features with AI assistance (Claude, ChatGPT, Grok) in HTML, CSS, JavaScript, React and Next.js, including a bootcamp learning platform with lecturer and student dashboards and role-based admin settings.</li>
+        <li>Rejected generic AI-generated designs and redirected them to the client's vision; caught a missed requirement (admin permissions without role limits) and resolved it with a detailed specification and moodboards.</li>
+        <li>Validate UI mockups for flow and feasibility before design proceeds, and review finished designs for message clarity, hierarchy, audience fit and consistency.</li>
+        <li>Design flyers in Adobe Photoshop and support designers with research, moodboards, themes and visual direction.</li>
+      </ul>
     </div>
-    <ul>
-      <li>Test and review client work end to end: 10+ websites, 10+ UI mockups, 30+ flyers and 8+ logos to date (approximate).</li>
-      <li>Execute manual test cases and record results, defects and retests in the company's structured QA reporting dashboard; document bugs with screenshots and track work in Trello.</li>
-      <li>Cover functional, UI, navigation, form validation, responsive, cross-browser and regression testing on real Android and iOS phones and tablets, and in Chrome, Safari, Firefox, Brave and Opera.</li>
-      <li>Diagnose issues with Chrome DevTools (device mode, console, network, application, performance) and Lighthouse audits.</li>
-      <li>Build web features with AI assistance (Claude, ChatGPT, Grok) in HTML, CSS, JavaScript, React and Next.js, including a bootcamp learning platform with lecturer and student dashboards and role-based admin settings.</li>
-      <li>Rejected generic AI-generated designs and redirected them to the client's vision; caught a missed requirement (admin permissions without role limits) and resolved it with a detailed specification and moodboards.</li>
-      <li>Validate UI mockups for flow and feasibility before design proceeds, and review finished designs for message clarity, hierarchy, audience fit and consistency.</li>
-      <li>Design flyers in Adobe Photoshop and support designers with research, moodboards, themes and visual direction.</li>
-    </ul>
-  </div>
 
-  <div class="role">
-    <div class="role-head">
-      <div><h3>National Service Personnel</h3><p class="where">{{COMPANY}} · Remote</p></div>
-      <p class="when">Oct 2024 – Sep 2025</p>
+    <div class="role">
+      <div class="role-head">
+        <div><h3>National Service Personnel</h3><p class="where">{{COMPANY}} · Remote</p></div>
+        <p class="when">Oct 2024 – Sep 2025</p>
+      </div>
+      <ul>
+        <li>Built in-depth skills in manual QA testing and graphic design on live client projects; retained as Software Engineer on completion.</li>
+      </ul>
     </div>
-    <ul>
-      <li>Built in-depth skills in manual QA testing and graphic design on live client projects; retained as Software Engineer on completion.</li>
-    </ul>
-  </div>
 
-  <div class="role">
-    <div class="role-head">
-      <div><h3>UiPath RPA Internship</h3><p class="where">Accra Technical University · School-organised programme delivered by UiPath practitioners</p></div>
-      <p class="when">Nov – Dec 2023</p>
+    <div class="role">
+      <div class="role-head">
+        <div><h3>UiPath RPA Internship</h3><p class="where">Accra Technical University · School-organised programme delivered by UiPath practitioners</p></div>
+        <p class="when">Nov – Dec 2023</p>
+      </div>
+      <ul>
+        <li>Introduction to robotic process automation with UiPath: how automations are built, and where they save time and reduce errors.</li>
+      </ul>
     </div>
-    <ul>
-      <li>Introduction to robotic process automation with UiPath: how automations are built, and where they save time and reduce errors.</li>
-    </ul>
-  </div>
 
-  <div class="role">
-    <div class="role-head">
-      <div><h3>IT Intern</h3><p class="where">Achimota Hospital · Accra</p></div>
-      <p class="when">Oct – Dec 2022</p>
+    <div class="role">
+      <div class="role-head">
+        <div><h3>IT Intern</h3><p class="where">Achimota Hospital · Accra</p></div>
+        <p class="when">Oct – Dec 2022</p>
+      </div>
+      <ul>
+        <li>Trained 12 incoming national service personnel on the hospital's LHIMS system, with supervisor approval.</li>
+        <li>Supported the maintenance of internal software applications and diagnosed and resolved network issues.</li>
+      </ul>
     </div>
-    <ul>
-      <li>Trained 12 incoming national service personnel on the hospital's LHIMS system, with supervisor approval.</li>
-      <li>Supported the maintenance of internal software applications and diagnosed and resolved network issues.</li>
-    </ul>
-  </div>
 
-  <div class="role">
-    <div class="role-head">
-      <div><h3>Assistant Teacher</h3><p class="where">Mini Miracles Montessori · Accra</p></div>
-      <p class="when">2021</p>
+    <div class="role">
+      <div class="role-head">
+        <div><h3>Assistant Teacher</h3><p class="where">Mini Miracles Montessori · Accra</p></div>
+        <p class="when">2021</p>
+      </div>
+      <ul>
+        <li>Coordinated classroom activities and explained concepts clearly to children and parents.</li>
+      </ul>
     </div>
-    <ul>
-      <li>Coordinated classroom activities and explained concepts clearly to children and parents.</li>
-    </ul>
+
   </div>
 </section>
 
 <section>
-  <h2>Skills</h2>
+  <h2><svg class="ic"><use href="#i-check"/></svg>Skills</h2>
   <dl class="skills">
-    <dt>Quality assurance</dt><dd>Manual, functional, UI, regression, responsive, cross-browser and mobile testing; form and error-state validation; usability checks; UI flow and design validation; test cases and scenarios; defect reporting; retesting and final validation</dd>
-    <dt>Development</dt><dd>HTML, CSS, JavaScript (hands-on); React and Next.js (AI-assisted builds); Git and GitHub; SQL basics (MySQL)</dd>
-    <dt>AI workflow</dt><dd>Claude (build), ChatGPT (requirements and prompt structuring), Grok (cross-checking); reviewing and testing AI-generated code</dd>
-    <dt>Tools</dt><dd>Chrome DevTools, Lighthouse, Trello, Adobe Photoshop, UiPath (introductory)</dd>
-    <dt>IT fundamentals</dt><dd>Network diagnostics and troubleshooting; Windows, Linux, macOS</dd>
+    <dt>Quality assurance</dt>
+    <dd><ul class="tags"><li>Manual testing</li><li>Functional testing</li><li>UI testing</li><li>Regression testing</li><li>Responsive testing</li><li>Cross-browser testing</li><li>Mobile testing</li><li>Form &amp; error-state validation</li><li>Usability checks</li><li>UI flow validation</li><li>Design validation</li><li>Test cases &amp; scenarios</li><li>Defect reporting</li><li>Retesting</li></ul></dd>
+    <dt>Development</dt>
+    <dd><ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Git &amp; GitHub</li><li class="soft">React (AI-assisted)</li><li class="soft">Next.js (AI-assisted)</li><li class="soft">SQL basics (MySQL)</li></ul></dd>
+    <dt>AI workflow</dt>
+    <dd><ul class="tags"><li>Claude (build)</li><li>ChatGPT (prompt structuring)</li><li>Grok (cross-checking)</li><li>Reviewing &amp; testing AI-generated code</li></ul></dd>
+    <dt>Tools</dt>
+    <dd><ul class="tags"><li>Chrome DevTools</li><li>Lighthouse</li><li>Trello</li><li>Adobe Photoshop</li><li class="soft">UiPath (introductory)</li></ul></dd>
+    <dt>IT fundamentals</dt>
+    <dd><ul class="tags"><li>Network diagnostics</li><li>Troubleshooting</li><li>Windows</li><li>Linux</li><li>macOS</li></ul></dd>
   </dl>
 </section>
 
 <section>
-  <h2>Projects</h2>
+  <h2><svg class="ic"><use href="#i-code"/></svg>Projects</h2>
   <div class="cols">
     <div class="item"><b>Personal portfolio</b><span>Plain HTML, CSS and JavaScript, built with AI assistance and tested on real devices. Includes a QA Lab with runnable test cases.</span></div>
     <div class="item"><b>The Odin Project</b><span>11 projects, Nov–Dec 2025, including Tic-Tac-Toe, a To-Do List app, Library and Calculator. On GitHub with live demos.</span></div>
@@ -155,12 +128,12 @@
 <section>
   <div class="cols">
     <div>
-      <h2>Education</h2>
+      <h2><svg class="ic"><use href="#i-book"/></svg>Education</h2>
       <div class="item"><b>HND Computer Science</b><span>Accra Technical University · 2022 – 2024</span></div>
       <div class="item"><b>WASSCE (Science)</b><span>St. Martin's Senior High School · 2016 – 2019</span></div>
     </div>
     <div>
-      <h2>Training</h2>
+      <h2><svg class="ic"><use href="#i-award"/></svg>Training</h2>
       <div class="item"><b>CISA exam-preparation short course</b><span>University of Ghana, Legon · exam not yet taken</span></div>
       <div class="item"><b>Google IT Support Professional; Introduction to Networking</b><span>Udemy</span></div>
       <div class="item"><b>AI for Research workshop</b><span>MEST Africa · Sep 2026</span></div>
@@ -171,11 +144,11 @@
 <section>
   <div class="cols">
     <div>
-      <h2>Languages</h2>
-      <p>English (fluent) · Twi (fluent) · Fante (advanced) · French (basic)</p>
+      <h2><svg class="ic"><use href="#i-lang"/></svg>Languages</h2>
+      <ul class="tags"><li>English · fluent</li><li>Twi · fluent</li><li>Fante · advanced</li><li>French · basic</li></ul>
     </div>
     <div>
-      <h2>References</h2>
+      <h2><svg class="ic"><use href="#i-users"/></svg>References</h2>
       <p>Available on request.</p>
     </div>
   </div>

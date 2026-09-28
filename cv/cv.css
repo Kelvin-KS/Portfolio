@@ -1,0 +1,88 @@
+/* Shared print styles for the CV and the references sheet.
+   Matches the portfolio: graphite, calibration yellow, Archivo / Instrument Sans / JetBrains Mono.
+   Rules for ATS (CV scanners): real text everywhere, single reading column,
+   icons only decorate text, no letter-spaced headings. */
+
+@page { size: A4; margin: 13mm 0 13mm 0; }
+@page :first { margin-top: 0; }
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; padding: 0 15mm; font: 400 9.5pt/1.45 "Instrument Sans", Arial, sans-serif; color: #15171a; }
+h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
+ul { list-style: none; }
+a { color: inherit; text-decoration: none; }
+
+.ic { width: 9.5pt; height: 9.5pt; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ---------- Header band ---------- */
+.band {
+  margin: 0 -15mm 12pt; padding: 13mm 15mm 11pt;
+  background: #121417; color: #e9e7e2;
+  background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+  background-size: 12px 12px;
+  border-bottom: 3pt solid #e8c547;
+}
+.eyebrow { font: 500 7.6pt/1.3 "JetBrains Mono", monospace; color: #e8c547; text-transform: uppercase; }
+.name { margin-top: 5pt; font: 800 28pt/0.95 "Archivo", Arial, sans-serif; font-stretch: 122%; text-transform: uppercase; }
+.title { margin-top: 6pt; font: 600 10.5pt/1.3 "Instrument Sans", Arial, sans-serif; }
+.contact { margin-top: 9pt; display: flex; flex-wrap: wrap; gap: 4pt 14pt; font-size: 8.6pt; color: #c9ccc9; }
+.contact li { display: inline-flex; align-items: center; gap: 4pt; }
+.contact .ic { color: #e8c547; }
+
+/* ---------- Sections ---------- */
+section { margin-top: 12pt; }
+h2 {
+  display: flex; align-items: center; gap: 6pt;
+  font: 700 9pt/1 "Instrument Sans", Arial, sans-serif; text-transform: uppercase;
+  color: #15171a; padding-bottom: 5pt; border-bottom: 0.6pt solid #d6d3ca; margin-bottom: 8pt;
+  break-after: avoid;
+}
+h2 .ic { width: 15pt; height: 15pt; padding: 3pt; border-radius: 3pt; background: #e8c547; color: #15171a; stroke-width: 2.2; }
+
+.summary { font-size: 9.8pt; }
+
+/* QA numbers strip */
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 9pt; border: 0.6pt solid #d6d3ca; border-radius: 4pt; }
+.stats div { padding: 6pt 9pt; border-left: 0.6pt solid #d6d3ca; }
+.stats div:first-child { border-left: 0; }
+.stats b { display: block; font: 800 15pt/1 "Archivo", Arial, sans-serif; font-stretch: 112%; }
+.stats span { font-size: 8pt; color: #585c59; }
+.stats-note { margin-top: 3pt; font-size: 7.6pt; color: #7a7e7b; }
+
+/* Experience timeline */
+.timeline { position: relative; padding-left: 13pt; }
+.timeline::before { content: ""; position: absolute; left: 3pt; top: 4pt; bottom: 6pt; width: 1pt; background: #d6d3ca; }
+.role { position: relative; margin-bottom: 9pt; break-inside: avoid; }
+.role::before { content: ""; position: absolute; left: -13pt; top: 3pt; width: 7pt; height: 7pt; border-radius: 50%; background: #fff; border: 1.5pt solid #b4b0a5; }
+.role.current::before { background: #e8c547; border-color: #c9a520; }
+.role-head { display: flex; justify-content: space-between; gap: 12pt; align-items: baseline; }
+.role h3 { font: 700 10pt/1.3 "Instrument Sans", Arial, sans-serif; }
+.where { color: #3d4144; font-size: 9pt; }
+.when { font: 500 8pt/1.3 "JetBrains Mono", monospace; color: #585c59; white-space: nowrap; padding: 1.5pt 5pt; background: #f1f0eb; border-radius: 3pt; }
+.role.current .when { background: #fbf1cc; color: #5c4600; }
+.role ul { margin-top: 3pt; }
+.role li { position: relative; padding-left: 9pt; margin-top: 1.5pt; }
+.role li::before { content: ""; position: absolute; left: 0; top: 5.3pt; width: 4pt; height: 1.3pt; background: #c9a520; }
+
+/* Skills as tags */
+.skills { display: grid; grid-template-columns: 28mm 1fr; gap: 6pt 10pt; break-inside: avoid; }
+.skills dt { font-weight: 700; padding-top: 2pt; }
+.tags { display: flex; flex-wrap: wrap; gap: 3pt; }
+.tags li { font-size: 8.4pt; padding: 1.5pt 6pt; border: 0.6pt solid #d6d3ca; border-radius: 10pt; background: #faf9f6; }
+.tags li.soft { color: #585c59; border-style: dashed; }
+
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16pt; }
+.item { margin-bottom: 6pt; break-inside: avoid; }
+.item b { font-weight: 700; }
+.item span { display: block; color: #3d4144; font-size: 8.9pt; }
+
+/* References sheet */
+.ref { padding: 11pt 13pt; border: 0.6pt solid #d6d3ca; border-left: 3pt solid #e8c547; border-radius: 4pt; margin-bottom: 10pt; break-inside: avoid; }
+.ref h3 { font: 700 11.5pt/1.3 "Instrument Sans", Arial, sans-serif; }
+.ref .role-line { color: #3d4144; }
+.ref .rel { margin-top: 3pt; font: 500 8pt/1.3 "JetBrains Mono", monospace; color: #7a5c00; text-transform: uppercase; }
+.ref ul { margin-top: 7pt; display: flex; flex-wrap: wrap; gap: 3pt 16pt; }
+.ref li { display: inline-flex; align-items: center; gap: 4pt; }
+.ref .ic { color: #7a5c00; }
+.fine { margin-top: 14pt; font-size: 8.4pt; color: #585c59; }
