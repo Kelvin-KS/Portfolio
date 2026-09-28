@@ -31,3 +31,12 @@ Then open http://localhost:4321.
 
 Hosted on Netlify from GitHub. Publish directory: `public`. No build command.
 The contact form uses Netlify Forms, so it only sends on the deployed site.
+
+## Test report
+
+`/how-this-site-was-tested/` is generated from the recorded test results in `data/test-results.json`.
+Evidence screenshots live in `evidence/` (source) and `public/assets/evidence/` (published).
+
+```bash
+python3 tools/build_report.py
+```

@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How this site was tested · Kelvin Sakyi</title>
+  <meta name="description" content="The full test report for Kelvin Sakyi's portfolio: 41 test cases, 199 recorded results across 8 device and browser setups, and 13 issues found, fixed and retested.">
+  <meta name="theme-color" content="#121417">
+  <link rel="canonical" href="https://kelvin-sakyi.netlify.app/how-this-site-was-tested/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://kelvin-sakyi.netlify.app/how-this-site-was-tested/">
+  <meta property="og:title" content="How this site was tested · Kelvin Sakyi">
+  <meta property="og:description" content="41 test cases, 199 results, 13 issues found and fixed. Lighthouse 98 · 100 · 100 · 100.">
+  <meta property="og:image" content="https://kelvin-sakyi.netlify.app/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script src="/js/report.js" defer></script>
+</head>
+<body class="report-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="Kelvin Sakyi, back to the homepage">
+        <span class="brand-mark">KS</span><span class="brand-slash">/</span><span class="brand-sub">test report</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Report sections">
+        <ul>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#devices">Devices</a></li>
+          <li><a href="#issues">Issues</a></li>
+          <li><a href="#evidence">Evidence</a></li>
+          <li><a href="#cases">All cases</a></li>
+          <li><a href="/">← Portfolio</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Theme: automatic">
+          <span class="theme-dot" aria-hidden="true"></span>
+          <span class="theme-label" id="theme-label">Auto</span>
+        </button>
+        <button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="report-hero">
+      <div class="container">
+        <p class="eyebrow">Test report · kelvin-sakyi.netlify.app · updated 2026-09-28</p>
+        <h1>How this site was tested</h1>
+        <p class="section-intro">I don't just say this site works. Here's the evidence: the test plan, every device it ran on, the bugs it caught, and how each one was fixed and retested.</p>
+        <dl class="scope report-scope">
+          <div><dt>Test cases</dt><dd>41</dd></div>
+          <div><dt>Results recorded</dt><dd>199</dd></div>
+          <div><dt>Device setups</dt><dd>8</dd></div>
+          <div><dt>Issues fixed</dt><dd>13/13</dd></div>
+        </dl>
+        <p class="lighthouse"><span class="mono">Lighthouse (mobile)</span> <b>98</b> Performance · <b>100</b> Accessibility · <b>100</b> Best Practices · <b>100</b> SEO</p>
+      </div>
+    </section>
+
+    <section class="section" id="method" aria-labelledby="method-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Method</p>
+          <h2 id="method-title">One plan, two ways of running it</h2>
+          <p class="section-intro">The same 41 test cases, each with steps and an expected result, were run by automation on emulated devices and by hand on real ones. Every result says which it was.</p>
+        </header>
+        <div class="method-grid">
+          <div class="method">
+            <h3>The plan</h3>
+            <p>41 test cases across 10 areas: navigation, theme, the hero, the QA Lab, contact and CV, accessibility and performance. Each case is marked <em>every device</em>, <em>laptop only</em> or <em>once is enough</em>, so effort goes where the risk is.</p>
+          </div>
+          <div class="method">
+            <h3>AI-assisted automated checks</h3>
+            <p>I directed an AI assistant to script my test cases against the live site in Chrome's device mode: 6 emulated phones and tablet plus desktop Chrome. Each check follows the steps and compares actual with expected. It covered screen sizes, dark mode, rotation, large text, reduce-motion and a slow 4G connection.</p>
+          </div>
+          <div class="method">
+            <h3>By hand, on real devices</h3>
+            <p>What automation can't do honestly: the clipboard, the phone's mail app, the real system font setting, Lighthouse, link previews in WhatsApp and LinkedIn, and signed-in links. Done on a real Galaxy A32 (Chrome) and my laptop.</p>
+          </div>
+          <div class="method method--limits">
+            <h3>Known limits</h3>
+            <p>Emulation runs Chrome's engine, so it is not a real Safari or Samsung Internet test. <strong>A real iPhone Safari run is still pending</strong> and will be added to this page.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="devices" aria-labelledby="devices-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Coverage</p>
+          <h2 id="devices-title">Results by device</h2>
+          <p class="section-intro">Final status of every recorded result. Blocked means the test could not run in that setup (for example, headless Chrome has no clipboard) and was covered on a real device instead.</p>
+        </header>
+        <div class="table-wrap"><table class="matrix">
+          <thead><tr><th scope="col">Device · browser</th><th scope="col">Pass</th><th scope="col">Fail</th><th scope="col">Blocked</th><th scope="col">N/A</th><th scope="col">Total</th></tr></thead>
+          <tbody>
+<tr><th scope="row">Galaxy S22 <span class="muted">· Chrome device mode</span> <span class="tag">Emulated</span></th><td class="num p">25</td><td class="num">0</td><td class="num b">1</td><td class="num">0</td><td class="num">26</td></tr>
+<tr><th scope="row">iPhone 13 <span class="muted">· Chrome device mode</span> <span class="tag">Emulated</span></th><td class="num p">25</td><td class="num">0</td><td class="num b">1</td><td class="num">0</td><td class="num">26</td></tr>
+<tr><th scope="row">Galaxy A15 <span class="muted">· Chrome device mode</span> <span class="tag">Emulated</span></th><td class="num p">25</td><td class="num">0</td><td class="num b">1</td><td class="num">0</td><td class="num">26</td></tr>
+<tr><th scope="row">Galaxy A32 <span class="muted">· Chrome device mode</span> <span class="tag">Emulated</span></th><td class="num p">25</td><td class="num">0</td><td class="num b">1</td><td class="num">0</td><td class="num">26</td></tr>
+<tr><th scope="row">Galaxy S6 <span class="muted">· Chrome device mode</span> <span class="tag">Emulated</span></th><td class="num p">25</td><td class="num">0</td><td class="num b">1</td><td class="num">0</td><td class="num">26</td></tr>
+<tr><th scope="row">Galaxy Tab A <span class="muted">· Chrome device mode</span> <span class="tag">Emulated</span></th><td class="num p">25</td><td class="num">0</td><td class="num b">1</td><td class="num">0</td><td class="num">26</td></tr>
+<tr><th scope="row">Galaxy A32 <span class="muted">· Chrome</span> <span class="tag tag--real">Real device</span></th><td class="num p">3</td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num">3</td></tr>
+<tr><th scope="row">Laptop <span class="muted">· Chrome</span> <span class="tag">Desktop</span></th><td class="num p">38</td><td class="num">0</td><td class="num b">1</td><td class="num">1</td><td class="num">40</td></tr>
+<tr class="pending-row"><th scope="row">iPhone 13 <span class="muted">· Safari</span> <span class="tag tag--real">Real device</span></th><td colspan="5">Pending: planned when a real iPhone is available</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">All setups</th><td class="num p">191</td><td class="num">0</td><td class="num">7</td><td class="num">1</td><td class="num">199</td></tr></tfoot>
+        </table></div>
+      </div>
+    </section>
+
+    <section class="section" id="issues" aria-labelledby="issues-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Issues found &amp; fixed</p>
+          <h2 id="issues-title">13 bugs caught before a visitor could</h2>
+          <p class="section-intro">Every issue follows the same cycle: found, documented, fixed, then retested. The fail is kept on record rather than quietly overwritten.</p>
+        </header>
+        <div class="findings">
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-01</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Live site hidden behind a Netlify login</h3>
+        <dl><div><dt>Found</dt><dd>Every visitor got 401 Unauthorized and a login page.</dd></div><div><dt>Cause</dt><dd>New Netlify projects default to private visitor access.</dd></div><div><dt>Fix</dt><dd>Production set to public; deploy previews kept private.</dd></div><div><dt>Retest</dt><dd>Live site returns 200 to anonymous visitors.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-02</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Console errors from an injected Netlify script</h3>
+        <dl><div><dt>Found</dt><dd>2 red Content-Security-Policy errors in the console on every page load.</dd></div><div><dt>Cause</dt><dd>Netlify&#x27;s &quot;Powered by Netlify&quot; badge injects inline code, which the site&#x27;s security policy correctly blocks.</dd></div><div><dt>Fix</dt><dd>Badge turned off (security policy kept strict).</dd></div><div><dt>Retest</dt><dd>Zero console errors on the live site.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-03</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Loading screen could cover the whole page</h3>
+        <dl><div><dt>Found</dt><dd>In a full-page render the KS loading screen never cleared.</dd></div><div><dt>Cause</dt><dd>It relied only on a CSS animation to hide itself.</dd></div><div><dt>Fix</dt><dd>Two independent timer failsafes remove it after 1.6 s and 2.5 s.</dd></div><div><dt>Retest</dt><dd>Clears on every load.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-04</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Stats showed &quot;0+&quot;</h3>
+        <dl><div><dt>Found</dt><dd>On desktop, the four stats at the bottom of the hero read 0+.</dd></div><div><dt>Cause</dt><dd>Count-up reset them to 0 and waited until they were 60% visible.</dd></div><div><dt>Fix</dt><dd>Real numbers stay until the animation actually starts.</dd></div><div><dt>Retest</dt><dd>Shows 10+, 10+, 30+, 8+.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-05</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Name could stay scrambled</h3>
+        <dl><div><dt>Found</dt><dd>Hero name read &quot;KJBVJX&quot; instead of KELVIN.</dd></div><div><dt>Cause</dt><dd>The effect counted frames; browsers slow timers in background tabs.</dd></div><div><dt>Fix</dt><dd>Timed by the clock so it always finishes on schedule.</dd></div><div><dt>Retest</dt><dd>Settles to KELVIN SAKYI.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-06</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Broken portfolio link in the public CV</h3>
+        <dl><div><dt>Found</dt><dd>&quot;Personal portfolio&quot; link in the downloadable CV pointed to a placeholder.</dd></div><div><dt>Cause</dt><dd>One CV variant was missing a value in the build script.</dd></div><div><dt>Fix</dt><dd>Value added, plus a build check that stops if any placeholder is left unfilled.</dd></div><div><dt>Retest</dt><dd>All CV links embedded and resolving.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-07</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>CV headings unreadable to screening software</h3>
+        <dl><div><dt>Found</dt><dd>Text extraction read headings as &quot;P R O F I L E&quot;.</dd></div><div><dt>Cause</dt><dd>Letter-spacing on headings.</dd></div><div><dt>Fix</dt><dd>Letter-spacing removed from headings.</dd></div><div><dt>Retest</dt><dd>Headings extract as PROFILE, EXPERIENCE, etc.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-08</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>QA Lab test details all expanded</h3>
+        <dl><div><dt>Found</dt><dd>Every test case&#x27;s details showed on load.</dd></div><div><dt>Cause</dt><dd>A CSS display rule overrode the hidden attribute.</dd></div><div><dt>Fix</dt><dd>Global rule so hidden always hides.</dd></div><div><dt>Retest</dt><dd>Details start collapsed.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-09</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Theme button wrapped on narrow phones</h3>
+        <dl><div><dt>Found</dt><dd>&quot;Auto · dark&quot; broke onto two lines when the menu was open at 375px.</dd></div><div><dt>Cause</dt><dd>Header buttons could shrink.</dd></div><div><dt>Fix</dt><dd>Buttons no longer shrink or wrap; brand text hidden under 400px.</dd></div><div><dt>Retest</dt><dd>Single line at 375px.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-10</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Stray scrollbar beside case study tabs</h3>
+        <dl><div><dt>Found</dt><dd>A vertical scrollbar indicator next to the tabs on desktop.</dd></div><div><dt>Cause</dt><dd>Horizontal overflow container also allowed vertical overflow.</dd></div><div><dt>Fix</dt><dd>Vertical overflow hidden, scrollbar hidden.</dd></div><div><dt>Retest</dt><dd>No scrollbar.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-11</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Phone numbers on the old CV were incomplete</h3>
+        <dl><div><dt>Found</dt><dd>Numbers had 7 digits after +233 instead of 9 (own and a referee&#x27;s).</dd></div><div><dt>Cause</dt><dd>Typo in the original CV.</dd></div><div><dt>Fix</dt><dd>Corrected numbers confirmed by Kelvin.</dd></div><div><dt>Retest</dt><dd>Private CV numbers tap to call and open WhatsApp.</dd></div></dl>
+        <p class="finding-by">Found by: Kelvin, with AI-assisted CV review</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-12</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Share preview image would not show</h3>
+        <dl><div><dt>Found</dt><dd>Share image and page URL were relative paths.</dd></div><div><dt>Cause</dt><dd>LinkedIn and WhatsApp need full addresses for previews.</dd></div><div><dt>Fix</dt><dd>Absolute image URL, og:url and canonical link added after the site got its final address.</dd></div><div><dt>Retest</dt><dd>Metadata points to https://kelvin-sakyi.netlify.app.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check</p>
+      </article>
+<article class="finding">
+        <div class="finding-head"><span class="mono">F-13</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+        <h3>Menu button pushed off-screen with large text</h3>
+        <dl><div><dt>Found</dt><dd>With the phone font size increased (130%), the header on ~412px-wide phones (Galaxy A15, A32) overflowed: the Menu button ended at 432px on a 412px screen, so it could not be tapped. Also failed on 320px screens.</dd></div><div><dt>Cause</dt><dd>Brand text, the labelled theme button and the Menu button did not fit on one line once text scaled up; &#x27;/ portfolio&#x27; was only hidden below 400px.</dd></div><div><dt>Fix</dt><dd>Under 520px the theme button becomes icon-only (full name kept for screen readers) and &#x27;/ portfolio&#x27; is hidden.</dd></div><div><dt>Retest</dt><dd>Deployed and retested on the live site at 320, 360 and 412px with 130% and 150% text: Menu fully on screen every time. TC-36 now passes on Galaxy A15 and A32 (emulated); regression run on S22, iPhone 13 and A15 found no new failures. Confirmed by Kelvin on a real Galaxy A32 with the system font at maximum.</dd></div></dl>
+        <p class="finding-by">Found by: AI-assisted automated check (Chrome device mode)</p>
+      </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="evidence" aria-labelledby="evidence-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Evidence</p>
+          <h2 id="evidence-title">Screenshots from the real runs</h2>
+        </header>
+        <div class="evidence-grid">
+<figure class="evidence">
+        <img src="/assets/evidence/tc-39-lighthouse-scores.webp" alt="TC-39 · Lighthouse, mobile, Incognito: 98 · 100 · 100 · 100" width="824" height="175" loading="lazy" decoding="async">
+        <figcaption>TC-39 · Lighthouse, mobile, Incognito: 98 · 100 · 100 · 100</figcaption>
+      </figure>
+<figure class="evidence">
+        <img src="/assets/evidence/tc-39-lighthouse-metrics.webp" alt="TC-39 · Metrics: LCP 1.8s, Total Blocking Time 0 ms, CLS 0" width="824" height="265" loading="lazy" decoding="async">
+        <figcaption>TC-39 · Metrics: LCP 1.8s, Total Blocking Time 0 ms, CLS 0</figcaption>
+      </figure>
+<figure class="evidence">
+        <img src="/assets/evidence/tc-39-lighthouse-first-run-extensions.webp" alt="TC-39 · The first run scored 63 and Lighthouse flagged browser extensions, so it was re-run clean" width="824" height="340" loading="lazy" decoding="async">
+        <figcaption>TC-39 · The first run scored 63 and Lighthouse flagged browser extensions, so it was re-run clean</figcaption>
+      </figure>
+<figure class="evidence">
+        <img src="/assets/evidence/tc-34-whatsapp-preview.webp" alt="TC-34 · Link preview in WhatsApp: title, description and image" width="876" height="260" loading="lazy" decoding="async">
+        <figcaption>TC-34 · Link preview in WhatsApp: title, description and image</figcaption>
+      </figure>
+<figure class="evidence">
+        <img src="/assets/evidence/tc-26-copy-email.webp" alt="TC-26 · Copy email on a real Galaxy A32: &#x27;Copied&#x27; on the page and in Android" width="540" height="940" loading="lazy" decoding="async">
+        <figcaption>TC-26 · Copy email on a real Galaxy A32: &#x27;Copied&#x27; on the page and in Android</figcaption>
+      </figure>
+<figure class="evidence">
+        <img src="/assets/evidence/tc-27-email-link-open-with.webp" alt="TC-27 · Email link on a real Galaxy A32 opens the mail app chooser" width="540" height="700" loading="lazy" decoding="async">
+        <figcaption>TC-27 · Email link on a real Galaxy A32 opens the mail app chooser</figcaption>
+      </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lessons" aria-labelledby="lessons-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Lessons</p>
+          <h2 id="lessons-title">What this round taught me</h2>
+        </header>
+        <ol class="lessons">
+          <li><h3>Question a bad result before "fixing" the site</h3><p>Lighthouse first scored Performance 63. It named browser extensions as the cause. Re-run in a clean Incognito window: 98. Nothing needed changing.</p></li>
+          <li><h3>Automation can be wrong too</h3><p>The automated run reported four failures that turned out to be mistakes in the test script (a hidden spam-trap field, reading a result too early, a desktop touch setting and where keyboard focus started). Each was investigated and re-run before anything was recorded; none are counted as site bugs.</p></li>
+          <li><h3>Emulation is not a real phone</h3><p>Copying to the clipboard and opening the mail app could only be proven on a real Galaxy A32. That's also why a real iPhone Safari run is still on the list.</p></li>
+          <li><h3>Bugs live at the edges</h3><p>F-13 only appeared with a large system font on mid-width phones. Normal settings never showed it. It was found, fixed, retested at three screen sizes, regression-tested, then confirmed on a real phone at maximum font size.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section" id="cases" aria-labelledby="cases-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">All test cases</p>
+          <h2 id="cases-title">The full plan and results</h2>
+          <p class="section-intro">Each row shows how many setups passed, and the actual result from one example run (a real-device run where there is one).</p>
+        </header>
+<details class="area" open>
+        <summary><span>Loading &amp; navigation</span><span class="muted mono">6 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-01</td>
+            <td><strong>Page loads completely</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Loader cleared: yes; hero image loaded: yes; all fonts loaded: yes; buttons: See how I work, Try the QA Lab, Download CV.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-02</td>
+            <td><strong>Loading screen shows once per session</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">First visit: loader shown and removed (yes). On reload: loader shown = no. (New private tab covered by starting each device in a fresh tab.)<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-03</td>
+            <td><strong>Phone menu opens, navigates and closes</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×6</span> <span class="chip chip--pend">N/A ×1</span></td>
+            <td class="note">Menu opened with 7 links; tapping QA Lab closed the menu and scrolled the section to 76px (header 61px); button read &#x27;Close&#x27; and closed the menu.<span class="how">iPhone 13 · Chrome device mode · AI-assisted automated check · emulated</span></td>
+          </tr><tr>
+            <td class="mono">TC-04</td>
+            <td><strong>Desktop navigation links</strong><span class="scope">Laptop only</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">All 7 links scrolled to their section below the 61px header. #how top 76px (active); #work top 76px (active); #lab top 76px (active); #design top 76px (active); #learning top 76px (active); #journey top 76px (active); #contact top 106px (active).<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-05</td>
+            <td><strong>&quot;KS / portfolio&quot; returns to the top</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Scrolled from 7816px to 0px.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-06</td>
+            <td><strong>No sideways scrolling or cut-off content</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Scrolled all 8 sections at 1440px: page width stayed 1440px, no element crosses the screen edge.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>Theme</span><span class="muted mono">2 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-07</td>
+            <td><strong>Theme follows the device setting</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Device dark: label &#x27;Auto · dark&#x27;, page dark. Device light: label &#x27;Auto · light&#x27;, page light. Hero stayed dark in both.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-08</td>
+            <td><strong>Theme button cycles and is remembered</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Cycle: Auto · light → Light → Dark → Auto · light. Set to Light and reloaded: label &#x27;Light&#x27;, theme kept.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>Hero</span><span class="muted mono">5 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-09</td>
+            <td><strong>Name decodes and settles correctly</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Name settled to &#x27;KELVIN SAKYI&#x27; with no scrambled letters left; yellow bar present.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-10</td>
+            <td><strong>Live check card</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Card: 5/5 pass; Run again: 5/5 pass. <span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-11</td>
+            <td><strong>Hero buttons go to the right place</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">&#x27;See how I work&#x27; → How I work section at 76px; &#x27;Try the QA Lab&#x27; → QA Lab at 76px (header 61px).<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-12</td>
+            <td><strong>Download CV from the hero</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Hero &#x27;Download CV&#x27; links to /assets/Kelvin-Sakyi-CV.pdf with the download attribute; file returns 200 application/pdf, 200 KB. Opening the saved file needs a real phone.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-13</td>
+            <td><strong>Stats show real numbers</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Before scrolling: 10+, 10+, 30+, 8+. After count-up: 10+, 10+, 30+, 8+.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>How I work</span><span class="muted mono">2 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-14</td>
+            <td><strong>Workflow signal</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Signal reached all 7/7 steps; Replay restarted it at step 1; it holds longer on &#x27;Me&#x27; checkpoint steps.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-15</td>
+            <td><strong>Section is complete and readable</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">7 steps, 7 &#x27;what I catch&#x27; rows, 18 device/browser/tool tags; no clipped text; no text under 11px.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>Case study</span><span class="muted mono">2 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-16</td>
+            <td><strong>Case study tabs switch</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Overview → only panel-overview visible; Product → only panel-product visible; QA evidence → only panel-qa visible.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-17</td>
+            <td><strong>Tabs work with the keyboard</strong><span class="scope">Laptop only</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">Right → tab-product / panel-product; Right → tab-qa; Left → tab-product; End → tab-qa; Home → tab-overview.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>QA Lab</span><span class="muted mono">5 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-18</td>
+            <td><strong>Run all tests on build v1.0</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">v1.0: 5 passed, 1 failed (TC-005), pass rate 83%, BUG-01 shown: yes.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-19</td>
+            <td><strong>Retest the fix on v1.1</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">v1.1: TC-005 Pass; BUG-01 now &#x27;Fixed · verified&#x27;; pass rate 100%.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-20</td>
+            <td><strong>Calculator: valid input</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">70 kg / 175 cm → &#x27;BMI 22.9Normal&#x27;.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-21</td>
+            <td><strong>Calculator: invalid input</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">&#x27;empty&#x27;/&#x27;empty&#x27; → &quot;Enter your weight and height.&quot;; &#x27;abc&#x27;/&#x27;175&#x27; → &quot;Use numbers only, e.g. 70 or 72.5.&quot;; &#x27;-5&#x27;/&#x27;175&#x27; → &quot;Weight must be between 1 and 500 kg.&quot;; &#x27;600&#x27;/&#x27;175&#x27; → &quot;Weight must be between 1 and 500 kg.&quot;; &#x27;70&#x27;/&#x27;30&#x27; → &quot;Height must be between 50 and 272 cm.&quot;. All shown in red, no NaN.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-22</td>
+            <td><strong>Reset and test details</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Details opened: yes, closed again: yes; after Reset all 6 tests Pending: yes, calculator cleared: yes.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>Projects &amp; links</span><span class="muted mono">3 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-23</td>
+            <td><strong>Project screenshots load</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">4/4 project screenshots loaded after scrolling to them.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-24</td>
+            <td><strong>Live demo and Code links</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">all 8 links return 200 on the live site and point to the matching project.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-25</td>
+            <td><strong>&quot;All repositories on GitHub&quot; link</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">returns 200.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>Contact &amp; CV</span><span class="muted mono">7 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-26</td>
+            <td><strong>Copy email button</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span> <span class="chip chip--pend">Blocked ×7</span></td>
+            <td class="note">Tested by Kelvin on a real Galaxy A32: tapping Copy shows &#x27;Copied&#x27; on the page and Android confirms &#x27;Copied to clipboard&#x27;. Screenshot: evidence/tc-26-copy-email.webp. (Emulated runs could not test this: headless Chrome has no clipboard.)<span class="how">Galaxy A32 · Chrome · Tested by hand</span></td>
+          </tr><tr>
+            <td class="mono">TC-27</td>
+            <td><strong>Email link opens the mail app</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">Tested by Kelvin on a real Galaxy A32: tapping the address opens Android&#x27;s &#x27;Open with&#x27; chooser (Gmail or Outlook) to write to sakyikelvin20@gmail.com. Screenshot: evidence/tc-27-email-link-open-with.webp.<span class="how">Galaxy A32 · Chrome · Tested by hand</span></td>
+          </tr><tr>
+            <td class="mono">TC-28</td>
+            <td><strong>GitHub and LinkedIn links</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">GitHub link checked automatically (200). LinkedIn blocks automated checks, so Kelvin clicked it by hand: it opens his profile (linkedin.com/in/kelvin-sakyi-88b411317).<span class="how">Laptop · Chrome · Tested by hand</span></td>
+          </tr><tr>
+            <td class="mono">TC-29</td>
+            <td><strong>Contact form validation</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Empty form: 3 errors (Enter your name. / Enter your email address. / Write a message of at least 10 characters.), focus on name, status &#x27;Please fix the highlighted fields.&#x27;. With &#x27;abc&#x27; + &#x27;hi&#x27;: email and message errors only, focus on email. Nothing was sent.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-30</td>
+            <td><strong>Contact form sends</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">Two test messages sent. Both appear in Netlify Forms as verified submissions (honeypot spam protection active); the second arrived in Gmail after the email notification was added.<span class="how">Laptop · Chrome · Tested by hand</span></td>
+          </tr><tr>
+            <td class="mono">TC-31</td>
+            <td><strong>Download CV from Contact</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">live PDF is byte-identical to the latest build; 2 pages; no phone number; button label (200 KB) matches the file (204 KB).<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-32</td>
+            <td><strong>Links inside the CV PDF</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">email, GitHub, LinkedIn, portfolio and Odin Project links are embedded; all resolve except LinkedIn, which blocks automated checks (see TC-28). Found the portfolio project link was broken (F-06); fixed and retested.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>General</span><span class="muted mono">4 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-33</td>
+            <td><strong>Page-not-found screen</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">/abc returns 404 with the custom &quot;Test failed&quot; page and a link back to the homepage.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-34</td>
+            <td><strong>Link preview when shared</strong><span class="scope">Once is enough</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">LinkedIn (Featured → Add a link) auto-filled the page title and hero image thumbnail. WhatsApp preview checked by Kelvin on his phones: title, description and image show on all devices.<span class="how">Laptop · Chrome · Tested by hand</span></td>
+          </tr><tr>
+            <td class="mono">TC-35</td>
+            <td><strong>Landscape orientation</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">Landscape 900px wide: page width 900px, name fits (884px), no clipped buttons or labels.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-36</td>
+            <td><strong>Large text setting</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×8</span></td>
+            <td class="note">Tested by Kelvin on a real Galaxy A32: system font size set to maximum, page reloaded. Layout unchanged; header (KS · theme icon · Menu) stays on one line with the Menu button fully visible. Real-device confirmation of the F-13 fix.<span class="how">Galaxy A32 · Chrome · Tested by hand</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+<details class="area">
+        <summary><span>Accessibility &amp; performance</span><span class="muted mono">5 cases</span></summary>
+        <div class="table-wrap"><table class="cases">
+          <thead><tr><th scope="col">ID</th><th scope="col">Test case</th><th scope="col">Results</th><th scope="col">Actual result (example run)</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">TC-37</td>
+            <td><strong>Keyboard only</strong><span class="scope">Laptop only</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">First Tab: &#x27;Skip to content&#x27;. Next 13 stops: Kelvin Sakyi, back to to, How I work, Work, QA Lab, Design review, Learning, Journey… all showed a visible focus outline.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-38</td>
+            <td><strong>Reduce motion setting</strong><span class="scope">Every device</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×7</span></td>
+            <td class="note">With reduce motion on: loading screen skipped, name scramble skipped, scan line hidden, 0 elements left invisible, Replay button hidden.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-39</td>
+            <td><strong>Lighthouse scores</strong><span class="scope">Laptop only</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">Run by Kelvin in Chrome DevTools Lighthouse (Mobile, Incognito): Performance 98, Accessibility 100, Best Practices 100, SEO 100. FCP 1.8s, LCP 1.8s, TBT 0 ms, CLS 0, Speed Index 2.3s. A first run in a normal window scored Performance 63; Lighthouse itself flagged Chrome extensions and stored data as distorting it, so it was re-run in Incognito. The only amber metric (FCP 1.8s) comes from the deliberate ~0.5s KS loading screen on first visits.<span class="how">Laptop · Chrome · Tested by hand</span></td>
+          </tr><tr>
+            <td class="mono">TC-40</td>
+            <td><strong>Console is clean</strong><span class="scope">Laptop only</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">zero console errors on the live site after fixing F-02.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr><tr>
+            <td class="mono">TC-41</td>
+            <td><strong>Slow connection</strong><span class="scope">Laptop only</span></td>
+            <td class="res"><span class="chip chip--pass">Pass ×1</span></td>
+            <td class="note">Throttled to Slow 4G (1.6 Mbps, 560 ms latency), cache off: first text on screen after 1.6s; fully loaded after 2.7s.<span class="how">Laptop · Chrome · AI-assisted automated check</span></td>
+          </tr></tbody>
+        </table></div>
+      </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p><a href="/">← Back to the portfolio</a></p>
+      <p>Test plan v1 · report generated from the recorded results.</p>
+    </div>
+  </footer>
+</body>
+</html>
