@@ -1,5 +1,7 @@
 # Kelvin Sakyi · Portfolio
 
+Live site: https://kelvin-sakyi.netlify.app
+
 Personal portfolio of Kelvin Sakyi, Software Engineer (Quality Assurance & AI-Assisted Web Development).
 
 ## Stack

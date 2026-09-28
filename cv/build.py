@@ -6,7 +6,7 @@ References      -> cv/out/Kelvin-Sakyi-References.pdf       (send only when a co
 
 Private details live in cv/private.json, which is git-ignored, so phone numbers,
 the employer's name and referees' details never reach the public repository.
-Usage: python3 cv/build.py [portfolio-url]
+Usage: python3 cv/build.py [portfolio-url]   (defaults to the live Netlify site)
 """
 import html
 import json
@@ -18,7 +18,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CV = ROOT / "cv"
 OUT = CV / "out"
 ICONS = (CV / "icons.svg").read_text()
-portfolio = sys.argv[1] if len(sys.argv) > 1 else ""
+portfolio = sys.argv[1] if len(sys.argv) > 1 else "https://kelvin-sakyi.netlify.app"
 
 try:
     private = json.loads((CV / "private.json").read_text())
