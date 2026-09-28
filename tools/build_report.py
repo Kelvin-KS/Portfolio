@@ -98,6 +98,18 @@ def matrix_rows():
     return "\n".join(rows)
 
 
+def how_found(f):
+    """Label the method that caught an issue, not a person: everything ran as part of one test process."""
+    who = f.get("foundBy", "")
+    if who.startswith("AI-assisted automated check"):
+        return "Automated check (AI-assisted)"
+    if "CV review" in who:
+        return "CV review (AI-assisted)"
+    if who.startswith("Kelvin"):
+        return "Manual check: visual comparison across pages and devices"
+    return who
+
+
 def finding_cards():
     out = []
     for fid, f in findings.items():
@@ -110,7 +122,7 @@ def finding_cards():
         <div class="finding-head"><span class="mono">{e(fid)}</span><span class="chip {chip}"{stamp}>{status}</span></div>
         <h3>{e(f['title'])}</h3>
         <dl>{rows}</dl>
-        <p class="finding-by">Found by: {e(f.get('foundBy', ''))}</p>
+        <p class="finding-by">How it was found: {e(how_found(f))}</p>
       </article>""")
     return "\n".join(out)
 
@@ -283,7 +295,7 @@ page = f"""<!doctype html>
         <header class="section-head">
           <p class="eyebrow">Issues found &amp; fixed</p>
           <h2 id="issues-title">{n_find} bugs caught before a visitor could</h2>
-          <p class="section-intro">Every issue follows the same cycle: found, documented, fixed, then retested. The fail is kept on record rather than quietly overwritten.</p>
+          <p class="section-intro">Every issue was caught by my test process: automated checks (AI-assisted) for breadth across devices, and manual checks for what automation misses. Each card says which method caught it, and each follows the same cycle: found, documented, fixed, retested. The fail stays on record rather than being quietly overwritten.</p>
         </header>
         <div class="findings">
 {finding_cards()}
