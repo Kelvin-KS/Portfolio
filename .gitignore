@@ -2,3 +2,5 @@
 node_modules/
 .netlify/
 .env
+cv/out/
+cv/private.json

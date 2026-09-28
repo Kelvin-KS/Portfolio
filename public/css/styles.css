@@ -144,6 +144,10 @@ a:hover { text-decoration-color: var(--accent); }
 .btn-primary:hover { background: #f1d35e; border-color: #f1d35e; }
 .btn-small { min-height: 36px; padding: 8px 12px; font-size: 0.75rem; }
 .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn-ghost { border-color: transparent; text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 5px; }
+.btn-ghost:hover { border-color: var(--line-strong); }
+.cv-btn { margin-top: 4px; }
+.cv-meta { font-weight: 500; letter-spacing: 0.02em; text-transform: none; opacity: 0.75; }
 
 .chip {
   display: inline-flex; align-items: center; white-space: nowrap;
