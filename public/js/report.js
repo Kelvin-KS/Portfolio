@@ -48,7 +48,7 @@
   function onView(els, fn, threshold, margin) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) { if (en.isIntersecting) { fn(en.target); io.unobserve(en.target); } });
-    }, { threshold: threshold || 0.2, rootMargin: margin || '0px' });
+    }, { threshold: threshold == null ? 0.2 : threshold, rootMargin: margin || '0px' });  // 0 is a valid threshold, so no `||`
     els.forEach(function (el) { io.observe(el); });
   }
 
