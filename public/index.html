@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kelvin Sakyi · Software Engineer, QA &amp; AI-Assisted Web Development</title>
+  <meta name="description" content="Kelvin Sakyi is a Software Engineer in Accra, Ghana, working across quality assurance and AI-assisted web development. I build, test and refine web experiences.">
+  <meta name="theme-color" content="#121417">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Kelvin Sakyi · Software Engineer, QA &amp; AI-Assisted Web Development">
+  <meta property="og:description" content="I build, test and refine web experiences. AI speeds up the build. Hands-on QA makes sure it actually works.">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap">
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/js/theme-init.js"></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/qa-lab.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Kelvin Sakyi, back to top">
+        <span class="brand-mark">KS</span><span class="brand-slash">/</span><span class="brand-sub">portfolio</span>
+      </a>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="#how">How I work</a></li>
+          <li><a href="#work">Work</a></li>
+          <li><a href="#lab">QA Lab</a></li>
+          <li><a href="#design">Design review</a></li>
+          <li><a href="#learning">Learning</a></li>
+          <li><a href="#journey">Journey</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-tools">
+        <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Theme: automatic">
+          <span class="theme-dot" aria-hidden="true"></span>
+          <span class="theme-label" id="theme-label">Auto</span>
+        </button>
+        <button class="menu-toggle" type="button" id="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="hero" id="top" aria-labelledby="hero-name">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Software Engineer · Quality Assurance &amp; AI-Assisted Web Development</p>
+          <h1 class="hero-name" id="hero-name"><span>Kelvin</span> <span>Sakyi</span></h1>
+          <p class="hero-line">I build, test, and refine web experiences.</p>
+          <p class="hero-sub">AI speeds up the build. Hands-on QA makes sure it actually works.</p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#how">See how I work</a>
+            <a class="btn" href="#lab">Try the QA Lab</a>
+          </div>
+          <p class="hero-meta">Accra, Ghana · Working remotely · Open to junior Software Engineer and Software Engineer in Test roles</p>
+        </div>
+
+        <aside class="session-card" aria-labelledby="session-title">
+          <div class="session-head">
+            <h2 class="session-title" id="session-title">Live check: this page, on your device</h2>
+            <span class="chip chip--run" id="session-status">Ready</span>
+          </div>
+          <ul class="checks" id="live-checks">
+            <li data-check="overflow"><span class="check-name">No sideways scrolling</span><span class="check-detail">—</span><span class="chip chip--pend">Pending</span></li>
+            <li data-check="theme"><span class="check-name">Theme follows your device</span><span class="check-detail">—</span><span class="chip chip--pend">Pending</span></li>
+            <li data-check="motion"><span class="check-name">Motion preference respected</span><span class="check-detail">—</span><span class="chip chip--pend">Pending</span></li>
+            <li data-check="names"><span class="check-name">Every link and button has a name</span><span class="check-detail">—</span><span class="chip chip--pend">Pending</span></li>
+            <li data-check="headings"><span class="check-name">Headings in logical order</span><span class="check-detail">—</span><span class="chip chip--pend">Pending</span></li>
+          </ul>
+          <div class="session-foot">
+            <p>These checks run in your browser, right now. I don't just say a page works. I check it.</p>
+            <button class="btn btn-small" type="button" id="rerun-checks">Run again</button>
+          </div>
+        </aside>
+      </div>
+
+      <div class="container">
+        <dl class="scope">
+          <div><dt>Websites</dt><dd>10+</dd></div>
+          <div><dt>UI mockups</dt><dd>10+</dd></div>
+          <div><dt>Flyers</dt><dd>30+</dd></div>
+          <div><dt>Logos</dt><dd>8+</dd></div>
+        </dl>
+        <p class="scope-note">Tested and reviewed since October 2024. Approximate totals; client names withheld.</p>
+      </div>
+    </section>
+
+    <!-- HOW I WORK -->
+    <section class="section" id="how" aria-labelledby="how-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Process</p>
+          <h2 id="how-title">Tools have roles. I'm the first and last checkpoint.</h2>
+          <p class="section-intro">I use AI heavily, and deliberately. Each tool has one job, and nothing ships until I've tested it myself.</p>
+        </header>
+
+        <ol class="flow">
+          <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Understand</h3><p>Requirements, the client's vision, and what "done" means.</p></li>
+          <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Validate the flow</h3><p>Check mockups before design moves on: does the journey make sense, and are the key states covered?</p></li>
+          <li class="flow-step"><span class="flow-who">AI · ChatGPT</span><h3>Structure</h3><p>Turn my notes into a precise, complete prompt.</p></li>
+          <li class="flow-step"><span class="flow-who">AI · Claude</span><h3>Build</h3><p>Generate the design and implementation.</p></li>
+          <li class="flow-step"><span class="flow-who">AI · Grok</span><h3>Cross-check</h3><p>A second opinion on prompts, test cases and answers.</p></li>
+          <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Test &amp; judge</h3><p>Real devices, DevTools and test cases. Accept, redirect or reject.</p></li>
+          <li class="flow-step is-human"><span class="flow-who">Me</span><h3>Validate</h3><p>Retest until it meets the requirement and the client's vision.</p></li>
+        </ol>
+        <p class="flow-loop"><span class="mono">Test &amp; judge → Build</span> repeats until it passes.</p>
+
+        <div class="catch">
+          <h3 class="catch-title">What I catch that AI misses</h3>
+          <p class="catch-intro">Problems I've found in AI-generated work, and the testing that catches each one.</p>
+          <ul class="catch-list">
+            <li><span class="catch-bug">Pages that 404 on refresh, links pointing to the wrong URL</span><span class="catch-skill">Navigation &amp; link testing</span></li>
+            <li><span class="catch-bug">Layouts that break on phones and tablets</span><span class="catch-skill">Responsive testing on real devices</span></li>
+            <li><span class="catch-bug">Console errors hidden behind a page that looks fine</span><span class="catch-skill">DevTools console &amp; network checks</span></li>
+            <li><span class="catch-bug">A fix in one place that breaks something else</span><span class="catch-skill">Regression testing</span></li>
+            <li><span class="catch-bug">Instructions ignored, or changes nobody asked for</span><span class="catch-skill">Checking results against requirements</span></li>
+            <li><span class="catch-bug">Slow pages and heavy images</span><span class="catch-skill">Lighthouse &amp; performance audits</span></li>
+            <li><span class="catch-bug">Designs that look like every other website</span><span class="catch-skill">Design review &amp; visual judgement</span></li>
+          </ul>
+        </div>
+
+        <div class="toolkit">
+          <div class="toolkit-block">
+            <h3>How formal?</h3>
+            <p>Client deliverables get structured test cases and written reports. My own prototypes get exploratory testing. I choose the level of formality based on the risk.</p>
+          </div>
+          <div class="toolkit-block">
+            <h3>Tested on</h3>
+            <ul class="tags">
+              <li>Galaxy S22</li><li>Galaxy A15</li><li>Galaxy A32</li><li>Galaxy S6</li><li>Galaxy Tab A</li><li>iPhone 13</li>
+            </ul>
+            <ul class="tags">
+              <li>Chrome</li><li>Safari</li><li>Firefox</li><li>Brave</li><li>Opera</li>
+            </ul>
+          </div>
+          <div class="toolkit-block">
+            <h3>DevTools I rely on</h3>
+            <ul class="tags">
+              <li>Device mode</li><li>Elements</li><li>Console</li><li>Network</li><li>Application</li><li>Performance</li><li>Lighthouse</li>
+            </ul>
+            <p class="small">Issues are logged with screenshots and tracked in Trello and in structured reporting dashboards.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WORK -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Selected work</p>
+          <h2 id="work-title">A bootcamp learning platform, built with AI and tested by hand</h2>
+          <p class="section-intro">Professional project for a client of my employer. Names, data and identifying details are left out because of confidentiality.</p>
+        </header>
+
+        <article class="case">
+          <div class="case-top">
+            <div>
+              <p class="case-kind">Education · Web platform</p>
+              <h3 class="case-title">Bootcamp learning platform</h3>
+            </div>
+            <span class="chip chip--pend">Confidential</span>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Case study views">
+            <button class="tab" role="tab" id="tab-overview" aria-controls="panel-overview" aria-selected="true" type="button">Overview</button>
+            <button class="tab" role="tab" id="tab-product" aria-controls="panel-product" aria-selected="false" tabindex="-1" type="button">Product</button>
+            <button class="tab" role="tab" id="tab-qa" aria-controls="panel-qa" aria-selected="false" tabindex="-1" type="button">QA evidence</button>
+          </div>
+
+          <div class="tab-panel" role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+            <dl class="facts">
+              <div><dt>My role</dt><dd>AI-assisted development and QA: direction, build, testing, validation</dd></div>
+              <div><dt>Includes</dt><dd>Lecturer dashboard, student dashboard, admin settings, and a showcase of the company's work</dd></div>
+              <div><dt>Built with</dt><dd>HTML, CSS, JavaScript, React, Next.js, with Claude</dd></div>
+              <div><dt>Testing</dt><dd>Formal: every test case executed and reported</dd></div>
+              <div><dt>Status</dt><dd>In the release pipeline, not yet live</dd></div>
+            </dl>
+            <div class="case-story">
+              <h4>The first version got rejected</h4>
+              <p>The first AI-generated version worked, but it looked like every other website. I rejected it and redirected the design towards a more futuristic look that matched what the client had in mind.</p>
+            </div>
+          </div>
+
+          <div class="tab-panel" role="tabpanel" id="panel-product" aria-labelledby="tab-product" tabindex="0" hidden>
+            <div class="wire-grid" aria-hidden="true">
+              <figure class="wire">
+                <div class="wire-screen"><span class="w-side"></span><span class="w-bar"></span><span class="w-card"></span><span class="w-card"></span><span class="w-card w-wide"></span></div>
+                <figcaption>Lecturer dashboard</figcaption>
+              </figure>
+              <figure class="wire">
+                <div class="wire-screen"><span class="w-side"></span><span class="w-bar"></span><span class="w-card w-wide"></span><span class="w-card"></span><span class="w-card"></span></div>
+                <figcaption>Student dashboard</figcaption>
+              </figure>
+              <figure class="wire">
+                <div class="wire-screen"><span class="w-side"></span><span class="w-bar"></span><span class="w-row"></span><span class="w-row"></span><span class="w-row"></span></div>
+                <figcaption>Admin settings</figcaption>
+              </figure>
+            </div>
+            <p class="notice"><strong>Recreated wireframes, not screenshots.</strong> They show the structure of the platform only. Real screenshots will be added once the client and my employer approve.</p>
+          </div>
+
+          <div class="tab-panel" role="tabpanel" id="panel-qa" aria-labelledby="tab-qa" tabindex="0" hidden>
+            <ol class="lifecycle" aria-label="Defect lifecycle">
+              <li>Test</li><li>Observe</li><li>Document</li><li>Report</li><li>Fix</li><li>Retest</li><li>Validate</li>
+            </ol>
+            <div class="defect">
+              <div class="defect-head"><span class="mono">Admin settings</span><span class="chip chip--fail">Requirement not met</span></div>
+              <dl class="defect-body">
+                <div><dt>Requirement</dt><dd>Each admin gets clearly defined responsibilities, so a secondary admin can't be given more access than they need.</dd></div>
+                <div><dt>Observed</dt><dd>A generic page of on/off checkboxes. No defined roles and no limits on secondary admins.</dd></div>
+                <div><dt>Action</dt><dd>Wrote a more detailed specification for the AI, supported with moodboards, until the intent was clear.</dd></div>
+                <div><dt>Retest</dt><dd>Admin responsibilities defined per role, as required. <span class="chip chip--pass">Pass</span></dd></div>
+              </dl>
+              <p class="defect-why"><strong>Why it matters:</strong> giving each admin only the access they need is the principle of least privilege, a basic of good security.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- QA LAB -->
+    <section class="section section--lab" id="lab" aria-labelledby="lab-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">QA Lab</p>
+          <h2 id="lab-title">Don't take my word for it. Run the tests.</h2>
+          <p class="section-intro">A live test session against a small, real app: a rebuilt version of the BMI calculator from my university days. Build 1.0 has a bug in it. Find it, then retest the fix.</p>
+        </header>
+
+        <div class="lab">
+          <div class="lab-app">
+            <div class="app-head">
+              <span class="mono">bmi-calculator</span>
+              <div class="build-switch" role="radiogroup" aria-label="App build">
+                <label><input type="radio" name="build" value="1.0" checked> v1.0</label>
+                <label><input type="radio" name="build" value="1.1"> v1.1</label>
+              </div>
+            </div>
+            <form class="bmi" id="bmi-form" novalidate>
+              <div class="field">
+                <label for="bmi-weight">Weight (kg)</label>
+                <input id="bmi-weight" name="weight" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 70">
+              </div>
+              <div class="field">
+                <label for="bmi-height">Height (cm)</label>
+                <input id="bmi-height" name="height" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 175">
+              </div>
+              <button class="btn btn-primary" type="submit" id="bmi-submit">Calculate</button>
+              <div class="bmi-out" id="bmi-out" aria-live="polite"></div>
+            </form>
+            <p class="app-note">Rebuilt version · demo only, not medical advice. Categories follow the WHO adult ranges.</p>
+          </div>
+
+          <div class="lab-session">
+            <div class="summary" aria-live="polite">
+              <div><span class="sum-n" id="sum-total">6</span><span class="sum-l">Total</span></div>
+              <div class="is-pass"><span class="sum-n" id="sum-pass">0</span><span class="sum-l">Passed</span></div>
+              <div class="is-fail"><span class="sum-n" id="sum-fail">0</span><span class="sum-l">Failed</span></div>
+              <div><span class="sum-n" id="sum-pend">6</span><span class="sum-l">Pending</span></div>
+              <div class="sum-rate"><span class="sum-n" id="sum-rate">—</span><span class="sum-l">Pass rate</span></div>
+            </div>
+            <div class="session-actions">
+              <button class="btn btn-primary btn-small" type="button" id="run-all">Run all tests</button>
+              <button class="btn btn-small" type="button" id="reset-tests">Reset</button>
+            </div>
+            <ol class="tcs" id="tcs"></ol>
+            <div class="bug" id="bug-report" hidden>
+              <div class="defect-head"><span class="mono">BUG-01 · Severity: medium</span><span class="chip chip--fail">Open</span></div>
+              <p><strong>A BMI of exactly 18.5 is labelled "Underweight".</strong> The WHO range for normal weight starts at 18.5, so the boundary value is wrong.</p>
+              <p class="small">Steps: weight 74 kg, height 200 cm → Calculate. Expected "Normal", actual "Underweight".</p>
+              <p class="small">Fixed in <strong>v1.1</strong>. Switch the build above and run TC-005 again.</p>
+            </div>
+          </div>
+        </div>
+        <p class="lab-foot">Test cases written for this portfolio, in the same format I use at work: steps, expected result, actual result, status.</p>
+      </div>
+    </section>
+
+    <!-- DESIGN REVIEW -->
+    <section class="section" id="design" aria-labelledby="design-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Design review</p>
+          <h2 id="design-title">Before design moves forward, I check the flow. When it's finished, I check the message.</h2>
+          <p class="section-intro">I review UI mockups, websites, flyers and logos, and I design flyers myself in Photoshop. I also support other designers with research, moodboards, themes and visual direction.</p>
+        </header>
+
+        <div class="review-grid">
+          <div class="review-col">
+            <h3>Mockup validation</h3>
+            <ol class="steps">
+              <li><strong>Mockup</strong><span>The proposed screens and flow</span></li>
+              <li><strong>Flow &amp; interaction check</strong><span>Is the journey logical? Can the functionality actually be built?</span></li>
+              <li><strong>Issues logged</strong><span>Missing states, dead ends, unclear steps</span></li>
+              <li><strong>Refined</strong><span>Changes made and checked again</span></li>
+              <li><strong>Approved for design</strong><span>Only then does visual design go ahead</span></li>
+            </ol>
+          </div>
+          <div class="review-col">
+            <h3>Finished design review</h3>
+            <div class="review-card">
+              <p class="review-label">Illustrative example, not a real client review</p>
+              <p class="review-subject">Event flyer</p>
+              <ul class="criteria">
+                <li><span>Message clarity</span><span class="chip chip--pass">Pass</span></li>
+                <li><span>Visual hierarchy: the date gets lost</span><span class="chip chip--fail">Fix</span></li>
+                <li><span>Audience fit</span><span class="chip chip--pass">Pass</span></li>
+                <li><span>Distinctiveness</span><span class="chip chip--pass">Pass</span></li>
+                <li><span>Consistency with the brand</span><span class="chip chip--pass">Pass</span></li>
+                <li><span>Impact at a glance</span><span class="chip chip--pend">Recheck</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LEARNING -->
+    <section class="section" id="learning" aria-labelledby="learning-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Learning</p>
+          <h2 id="learning-title">Learning in public</h2>
+          <p class="section-intro">Built while working through The Odin Project's Foundations and JavaScript courses, November–December 2025.</p>
+        </header>
+
+        <ul class="projects">
+          <li class="project">
+            <h3>Tic-Tac-Toe</h3>
+            <p>Two-player browser game with turn logic, and win and tie detection.</p>
+            <div class="project-links"><a href="https://kelvin-ks.github.io/Tic-Tac-Toe/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/Tic-Tac-Toe" rel="noopener">Code</a></div>
+          </li>
+          <li class="project">
+            <h3>To-Do List</h3>
+            <p>Projects and to-dos organised in a sidebar, with search.</p>
+            <div class="project-links"><a href="https://kelvin-ks.github.io/todo-list/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/todo-list" rel="noopener">Code</a></div>
+          </li>
+          <li class="project">
+            <h3>Library</h3>
+            <p>Add books, remove them, and mark them as read.</p>
+            <div class="project-links"><a href="https://kelvin-ks.github.io/MyLibrary/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/MyLibrary" rel="noopener">Code</a></div>
+          </li>
+          <li class="project">
+            <h3>Calculator</h3>
+            <p>An on-screen calculator for basic arithmetic, in plain JavaScript.</p>
+            <div class="project-links"><a href="https://kelvin-ks.github.io/Project-calculator/" rel="noopener">Live demo</a><a href="https://github.com/Kelvin-KS/Project-calculator" rel="noopener">Code</a></div>
+          </li>
+        </ul>
+        <p class="more-link"><a href="https://github.com/Kelvin-KS?tab=repositories" rel="noopener">All repositories on GitHub →</a></p>
+
+        <div class="next">
+          <h3>What's next</h3>
+          <ol class="next-list">
+            <li><span class="mono">Next</span>Finish The Odin Project's JavaScript course: async code, APIs, and testing with Jest</li>
+            <li><span class="mono">Then</span>Test automation with Playwright</li>
+            <li><span class="mono">Exploring</span>Security testing</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- JOURNEY -->
+    <section class="section" id="journey" aria-labelledby="journey-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Journey</p>
+          <h2 id="journey-title">Explaining things clearly. Checking that things work.</h2>
+          <p class="section-intro">Before code, I was a teacher. Every step since has come back to those two things.</p>
+        </header>
+
+        <ol class="timeline">
+          <li><span class="tl-when">Oct 2025 – now</span><div><strong>Software Engineer</strong><span>Remote software &amp; design company, retained after national service. QA, design review and AI-assisted web development.</span></div></li>
+          <li><span class="tl-when">Oct 2024 – Sep 2025</span><div><strong>National Service</strong><span>Same company. Built in-depth skills in QA testing and graphic design.</span></div></li>
+          <li><span class="tl-when">Nov – Dec 2023</span><div><strong>UiPath RPA Internship</strong><span>School-organised programme delivered by UiPath practitioners.</span></div></li>
+          <li><span class="tl-when">Oct – Dec 2022</span><div><strong>IT Intern, Achimota Hospital</strong><span>Trained 12 incoming national service personnel on the hospital's LHIMS system, with supervisor approval.</span></div></li>
+          <li><span class="tl-when">2022 – 2024</span><div><strong>HND Computer Science, Accra Technical University</strong><span>Final-year project: an online bookshop system.</span></div></li>
+          <li><span class="tl-when">2021</span><div><strong>Assistant Teacher, Mini Miracles Montessori</strong><span>Where explaining things clearly started.</span></div></li>
+        </ol>
+
+        <div class="langs">
+          <h3>Languages</h3>
+          <ul class="tags"><li>English</li><li>Twi</li><li>Fante</li><li>French (basic)</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
+      <div class="container contact-grid">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2 id="contact-title">Let's talk.</h2>
+          <p class="section-intro">Open to junior Software Engineer and Software Engineer in Test roles, in Ghana or remote.</p>
+          <div class="email-row">
+            <a class="email" href="mailto:sakyikelvin20@gmail.com">sakyikelvin20@gmail.com</a>
+            <button class="btn btn-small" type="button" id="copy-email" data-email="sakyikelvin20@gmail.com">Copy</button>
+            <span class="copy-status" id="copy-status" aria-live="polite"></span>
+          </div>
+          <ul class="socials">
+            <li><a href="https://github.com/Kelvin-KS" rel="noopener">GitHub · Kelvin-KS</a></li>
+            <li><a href="https://www.linkedin.com/in/kelvin-sakyi-88b411317/" rel="noopener">LinkedIn · Kelvin Sakyi</a></li>
+          </ul>
+          <p class="small">CV available on request.</p>
+        </div>
+
+        <form class="contact-form" id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+          <input type="hidden" name="form-name" value="contact">
+          <p class="hp"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+          <div class="field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" autocomplete="name" required>
+            <p class="field-error" id="cf-name-error"></p>
+          </div>
+          <div class="field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" autocomplete="email" required>
+            <p class="field-error" id="cf-email-error"></p>
+          </div>
+          <div class="field">
+            <label for="cf-message">Message</label>
+            <textarea id="cf-message" name="message" rows="5" required></textarea>
+            <p class="field-error" id="cf-message-error"></p>
+          </div>
+          <button class="btn btn-primary" type="submit" id="cf-submit">Send message</button>
+          <p class="form-status" id="form-status" role="status"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© 2026 Kelvin Sakyi</p>
+      <p>Plain HTML, CSS and JavaScript. Built with AI assistance, tested by me.</p>
+    </div>
+  </footer>
+</body>
+</html>
