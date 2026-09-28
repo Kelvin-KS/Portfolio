@@ -855,3 +855,35 @@ details.area .table-wrap { border: 0; border-top: 1px solid var(--line); border-
 .cases .how { display: block; margin-top: 4px; font: 500 0.6875rem/1.4 var(--font-mono); color: var(--accent-text); }
 .cases tr:last-child td { border-bottom: 0; }
 .report-page .site-footer a { color: var(--ink); }
+
+/* ---------- Test report: motion ---------- */
+.report-hero { position: relative; isolation: isolate; overflow: hidden; }
+.report-hero::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background-image: linear-gradient(var(--grid) 1px, transparent 1px), linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  mask-image: linear-gradient(to bottom, #000 55%, transparent);
+}
+.report-scan {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 2px; z-index: -1; pointer-events: none;
+  background: var(--accent); box-shadow: 0 0 12px 2px color-mix(in srgb, var(--accent) 55%, transparent);
+  opacity: 0; animation: scan 7s cubic-bezier(0.45, 0, 0.25, 1) 0.6s infinite;
+}
+.report-scan::after {
+  content: ""; position: absolute; top: 0; bottom: 0; right: 2px; width: 200px;
+  background:
+    linear-gradient(color-mix(in srgb, var(--accent) 30%, transparent) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, color-mix(in srgb, var(--accent) 30%, transparent) 1px, transparent 1px) 0 0 / 24px 24px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000); mask-image: linear-gradient(90deg, transparent, #000);
+}
+/* Issue stamp: shown as FAIL first, then flips to FIXED & RETESTED (set up by report.js only) */
+.finding .chip[data-stamp] { transition: color 0.25s var(--ease), transform 0.25s var(--ease); }
+.finding .chip.is-stamping { animation: pop 0.45s var(--ease); }
+@media (prefers-reduced-motion: reduce) {
+  .report-scan { display: none; }
+}
+.finding .chip.is-failing { position: relative; color: transparent; border-color: var(--fail); }
+.finding .chip.is-failing::before {
+  content: "Fail"; position: absolute; inset: 0; display: flex; align-items: center; padding: 0 7px; color: var(--fail);
+}

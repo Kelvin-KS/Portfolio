@@ -50,17 +50,18 @@
 
   <main id="main">
     <section class="report-hero">
+      <div class="report-scan" aria-hidden="true"></div>
       <div class="container">
         <p class="eyebrow">Test report · kelvin-sakyi.netlify.app · updated 2026-09-28</p>
         <h1>How this site was tested</h1>
         <p class="section-intro">I don't just say this site works. Here's the evidence: the test plan, every device it ran on, the bugs it caught, and how each one was fixed and retested.</p>
         <dl class="scope report-scope">
-          <div><dt>Test cases</dt><dd>41</dd></div>
-          <div><dt>Results recorded</dt><dd>199</dd></div>
-          <div><dt>Device setups</dt><dd>8</dd></div>
-          <div><dt>Issues fixed</dt><dd>13/13</dd></div>
+          <div><dt>Test cases</dt><dd><span data-count="41">41</span></dd></div>
+          <div><dt>Results recorded</dt><dd><span data-count="199">199</span></dd></div>
+          <div><dt>Device setups</dt><dd><span data-count="8">8</span></dd></div>
+          <div><dt>Issues fixed</dt><dd><span data-count="13">13</span>/13</dd></div>
         </dl>
-        <p class="lighthouse"><span class="mono">Lighthouse (mobile)</span> <b>98</b> Performance · <b>100</b> Accessibility · <b>100</b> Best Practices · <b>100</b> SEO</p>
+        <p class="lighthouse"><span class="mono">Lighthouse (mobile)</span> <b data-count="98">98</b> Performance · <b data-count="100">100</b> Accessibility · <b data-count="100">100</b> Best Practices · <b data-count="100">100</b> SEO</p>
       </div>
     </section>
 
@@ -125,80 +126,80 @@
           <p class="section-intro">Every issue follows the same cycle: found, documented, fixed, then retested. The fail is kept on record rather than quietly overwritten.</p>
         </header>
         <div class="findings">
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-01</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-01</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Live site hidden behind a Netlify login</h3>
         <dl><div><dt>Found</dt><dd>Every visitor got 401 Unauthorized and a login page.</dd></div><div><dt>Cause</dt><dd>New Netlify projects default to private visitor access.</dd></div><div><dt>Fix</dt><dd>Production set to public; deploy previews kept private.</dd></div><div><dt>Retest</dt><dd>Live site returns 200 to anonymous visitors.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-02</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-02</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Console errors from an injected Netlify script</h3>
         <dl><div><dt>Found</dt><dd>2 red Content-Security-Policy errors in the console on every page load.</dd></div><div><dt>Cause</dt><dd>Netlify&#x27;s &quot;Powered by Netlify&quot; badge injects inline code, which the site&#x27;s security policy correctly blocks.</dd></div><div><dt>Fix</dt><dd>Badge turned off (security policy kept strict).</dd></div><div><dt>Retest</dt><dd>Zero console errors on the live site.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-03</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-03</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Loading screen could cover the whole page</h3>
         <dl><div><dt>Found</dt><dd>In a full-page render the KS loading screen never cleared.</dd></div><div><dt>Cause</dt><dd>It relied only on a CSS animation to hide itself.</dd></div><div><dt>Fix</dt><dd>Two independent timer failsafes remove it after 1.6 s and 2.5 s.</dd></div><div><dt>Retest</dt><dd>Clears on every load.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-04</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-04</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Stats showed &quot;0+&quot;</h3>
         <dl><div><dt>Found</dt><dd>On desktop, the four stats at the bottom of the hero read 0+.</dd></div><div><dt>Cause</dt><dd>Count-up reset them to 0 and waited until they were 60% visible.</dd></div><div><dt>Fix</dt><dd>Real numbers stay until the animation actually starts.</dd></div><div><dt>Retest</dt><dd>Shows 10+, 10+, 30+, 8+.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-05</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-05</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Name could stay scrambled</h3>
         <dl><div><dt>Found</dt><dd>Hero name read &quot;KJBVJX&quot; instead of KELVIN.</dd></div><div><dt>Cause</dt><dd>The effect counted frames; browsers slow timers in background tabs.</dd></div><div><dt>Fix</dt><dd>Timed by the clock so it always finishes on schedule.</dd></div><div><dt>Retest</dt><dd>Settles to KELVIN SAKYI.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-06</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-06</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Broken portfolio link in the public CV</h3>
         <dl><div><dt>Found</dt><dd>&quot;Personal portfolio&quot; link in the downloadable CV pointed to a placeholder.</dd></div><div><dt>Cause</dt><dd>One CV variant was missing a value in the build script.</dd></div><div><dt>Fix</dt><dd>Value added, plus a build check that stops if any placeholder is left unfilled.</dd></div><div><dt>Retest</dt><dd>All CV links embedded and resolving.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-07</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-07</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>CV headings unreadable to screening software</h3>
         <dl><div><dt>Found</dt><dd>Text extraction read headings as &quot;P R O F I L E&quot;.</dd></div><div><dt>Cause</dt><dd>Letter-spacing on headings.</dd></div><div><dt>Fix</dt><dd>Letter-spacing removed from headings.</dd></div><div><dt>Retest</dt><dd>Headings extract as PROFILE, EXPERIENCE, etc.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-08</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-08</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>QA Lab test details all expanded</h3>
         <dl><div><dt>Found</dt><dd>Every test case&#x27;s details showed on load.</dd></div><div><dt>Cause</dt><dd>A CSS display rule overrode the hidden attribute.</dd></div><div><dt>Fix</dt><dd>Global rule so hidden always hides.</dd></div><div><dt>Retest</dt><dd>Details start collapsed.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-09</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-09</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Theme button wrapped on narrow phones</h3>
         <dl><div><dt>Found</dt><dd>&quot;Auto · dark&quot; broke onto two lines when the menu was open at 375px.</dd></div><div><dt>Cause</dt><dd>Header buttons could shrink.</dd></div><div><dt>Fix</dt><dd>Buttons no longer shrink or wrap; brand text hidden under 400px.</dd></div><div><dt>Retest</dt><dd>Single line at 375px.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-10</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-10</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Stray scrollbar beside case study tabs</h3>
         <dl><div><dt>Found</dt><dd>A vertical scrollbar indicator next to the tabs on desktop.</dd></div><div><dt>Cause</dt><dd>Horizontal overflow container also allowed vertical overflow.</dd></div><div><dt>Fix</dt><dd>Vertical overflow hidden, scrollbar hidden.</dd></div><div><dt>Retest</dt><dd>No scrollbar.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-11</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-11</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Phone numbers on the old CV were incomplete</h3>
         <dl><div><dt>Found</dt><dd>Numbers had 7 digits after +233 instead of 9 (own and a referee&#x27;s).</dd></div><div><dt>Cause</dt><dd>Typo in the original CV.</dd></div><div><dt>Fix</dt><dd>Corrected numbers confirmed by Kelvin.</dd></div><div><dt>Retest</dt><dd>Private CV numbers tap to call and open WhatsApp.</dd></div></dl>
         <p class="finding-by">Found by: Kelvin, with AI-assisted CV review</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-12</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-12</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Share preview image would not show</h3>
         <dl><div><dt>Found</dt><dd>Share image and page URL were relative paths.</dd></div><div><dt>Cause</dt><dd>LinkedIn and WhatsApp need full addresses for previews.</dd></div><div><dt>Fix</dt><dd>Absolute image URL, og:url and canonical link added after the site got its final address.</dd></div><div><dt>Retest</dt><dd>Metadata points to https://kelvin-sakyi.netlify.app.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check</p>
       </article>
-<article class="finding">
-        <div class="finding-head"><span class="mono">F-13</span><span class="chip chip--pass">Fixed &amp; retested</span></div>
+<article class="finding bracket">
+        <div class="finding-head"><span class="mono">F-13</span><span class="chip chip--pass" data-stamp="fixed">Fixed &amp; retested</span></div>
         <h3>Menu button pushed off-screen with large text</h3>
         <dl><div><dt>Found</dt><dd>With the phone font size increased (130%), the header on ~412px-wide phones (Galaxy A15, A32) overflowed: the Menu button ended at 432px on a 412px screen, so it could not be tapped. Also failed on 320px screens.</dd></div><div><dt>Cause</dt><dd>Brand text, the labelled theme button and the Menu button did not fit on one line once text scaled up; &#x27;/ portfolio&#x27; was only hidden below 400px.</dd></div><div><dt>Fix</dt><dd>Under 520px the theme button becomes icon-only (full name kept for screen readers) and &#x27;/ portfolio&#x27; is hidden.</dd></div><div><dt>Retest</dt><dd>Deployed and retested on the live site at 320, 360 and 412px with 130% and 150% text: Menu fully on screen every time. TC-36 now passes on Galaxy A15 and A32 (emulated); regression run on S22, iPhone 13 and A15 found no new failures. Confirmed by Kelvin on a real Galaxy A32 with the system font at maximum.</dd></div></dl>
         <p class="finding-by">Found by: AI-assisted automated check (Chrome device mode)</p>

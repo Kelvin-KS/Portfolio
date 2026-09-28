@@ -40,4 +40,48 @@
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && nav.classList.contains('is-open')) { setMenu(false); menuBtn.focus(); }
   });
+
+  /* ---------- Motion (skipped entirely when the visitor prefers reduced motion) ---------- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce || !('IntersectionObserver' in window)) return;
+
+  function onView(els, fn, threshold) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { fn(en.target); io.unobserve(en.target); } });
+    }, { threshold: threshold || 0.2 });
+    els.forEach(function (el) { io.observe(el); });
+  }
+
+  // Fade content in as it scrolls into view (and draw the headings' calibration marks).
+  // Tables inside the collapsible test-case sections are left out, so expanding one is instant.
+  var reveal = Array.prototype.filter.call(
+    document.querySelectorAll('.section-head, .method, .table-wrap, .finding, .evidence, .lessons li, details.area'),
+    function (el) { return !el.closest('details'); });
+  reveal.forEach(function (el) { el.classList.add('reveal'); });
+  onView(reveal, function (el) { el.classList.add('is-in'); }, 0.08);
+
+  // Count numbers up. The real value stays in the HTML until counting actually starts.
+  onView(Array.prototype.slice.call(document.querySelectorAll('[data-count]')), function (el) {
+    var end = Number(el.getAttribute('data-count'));
+    var start = performance.now();
+    el.textContent = '0';
+    (function step(now) {
+      var t = Math.min(1, (now - start) / 1000);
+      el.textContent = Math.round(end * (1 - Math.pow(1 - t, 3)));
+      if (t < 1) requestAnimationFrame(step);
+    })(start);
+  }, 0.5);
+
+  // Issue lifecycle: each fixed issue briefly shows FAIL, then flips to its real status.
+  // FAIL is drawn by CSS over the real text, so screen readers always read the true status.
+  var stamps = Array.prototype.slice.call(document.querySelectorAll('.finding .chip[data-stamp]'));
+  stamps.forEach(function (chip) { chip.classList.add('is-failing'); });
+  onView(stamps, function (chip) {
+    setTimeout(function () {
+      chip.classList.remove('is-failing');
+      chip.classList.add('is-stamping');
+    }, 650);
+  }, 0.9);
+  // Failsafe: never leave a FAIL stamp showing (printing, or a card that never quite enters view).
+  window.addEventListener('beforeprint', function () { stamps.forEach(function (c) { c.classList.remove('is-failing'); }); });
 })();

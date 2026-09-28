@@ -105,8 +105,9 @@ def finding_cards():
         chip = "chip--pass" if f.get("status") == "fixed" else "chip--fail"
         rows = "".join(f"<div><dt>{label}</dt><dd>{e(f[key])}</dd></div>"
                        for label, key in (("Found", "found"), ("Cause", "cause"), ("Fix", "fix"), ("Retest", "retest")) if f.get(key))
-        out.append(f"""<article class="finding">
-        <div class="finding-head"><span class="mono">{e(fid)}</span><span class="chip {chip}">{status}</span></div>
+        stamp = ' data-stamp="fixed"' if f.get("status") == "fixed" else ""
+        out.append(f"""<article class="finding bracket">
+        <div class="finding-head"><span class="mono">{e(fid)}</span><span class="chip {chip}"{stamp}>{status}</span></div>
         <h3>{e(f['title'])}</h3>
         <dl>{rows}</dl>
         <p class="finding-by">Found by: {e(f.get('foundBy', ''))}</p>
@@ -217,17 +218,18 @@ page = f"""<!doctype html>
 
   <main id="main">
     <section class="report-hero">
+      <div class="report-scan" aria-hidden="true"></div>
       <div class="container">
         <p class="eyebrow">Test report · kelvin-sakyi.netlify.app · updated {e(DATA['exported'])}</p>
         <h1>How this site was tested</h1>
         <p class="section-intro">I don't just say this site works. Here's the evidence: the test plan, every device it ran on, the bugs it caught, and how each one was fixed and retested.</p>
         <dl class="scope report-scope">
-          <div><dt>Test cases</dt><dd>{n_cases}</dd></div>
-          <div><dt>Results recorded</dt><dd>{n_results}</dd></div>
-          <div><dt>Device setups</dt><dd>{n_setups}</dd></div>
-          <div><dt>Issues fixed</dt><dd>{n_fixed}/{n_find}</dd></div>
+          <div><dt>Test cases</dt><dd><span data-count="{n_cases}">{n_cases}</span></dd></div>
+          <div><dt>Results recorded</dt><dd><span data-count="{n_results}">{n_results}</span></dd></div>
+          <div><dt>Device setups</dt><dd><span data-count="{n_setups}">{n_setups}</span></dd></div>
+          <div><dt>Issues fixed</dt><dd><span data-count="{n_fixed}">{n_fixed}</span>/{n_find}</dd></div>
         </dl>
-        <p class="lighthouse"><span class="mono">Lighthouse (mobile)</span> <b>98</b> Performance · <b>100</b> Accessibility · <b>100</b> Best Practices · <b>100</b> SEO</p>
+        <p class="lighthouse"><span class="mono">Lighthouse (mobile)</span> <b data-count="98">98</b> Performance · <b data-count="100">100</b> Accessibility · <b data-count="100">100</b> Best Practices · <b data-count="100">100</b> SEO</p>
       </div>
     </section>
 
