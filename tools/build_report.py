@@ -155,10 +155,42 @@ def case_tables():
     return "\n".join(out)
 
 
+def security_section():
+    sec = DATA.get("security")
+    if not sec:
+        return ""
+    rows = []
+    for c in sec["checks"]:
+        chip = "chip--pass" if c["status"] == "pass" else "chip--fail"
+        rows.append(f"""<tr>
+            <td class="mono">{e(c['owasp'])}</td>
+            <td><strong>{e(c['check'])}</strong><span class="scope">{e(c['method'])}</span></td>
+            <td class="note">{e(c['result'])}</td>
+            <td><span class="chip {chip}">{'Pass' if c['status'] == 'pass' else 'Fail'}</span></td>
+          </tr>""")
+    passed = sum(1 for c in sec["checks"] if c["status"] == "pass")
+    notes = "".join(f"<li>{e(n)}</li>" for n in sec.get("notes", []))
+    return f"""<section class="section" id="security" aria-labelledby="security-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Security checks</p>
+          <h2 id="security-title">Tested against the OWASP Top 10</h2>
+          <p class="section-intro">{e(sec['summary'])} Checked {e(sec['date'])}: {passed} of {len(sec['checks'])} passed.</p>
+        </header>
+        <div class="table-wrap"><table class="cases security">
+          <thead><tr><th scope="col">OWASP area</th><th scope="col">Check</th><th scope="col">Result</th><th scope="col">Status</th></tr></thead>
+          <tbody>{''.join(rows)}</tbody>
+        </table></div>
+        <ul class="sec-notes">{notes}</ul>
+      </div>
+    </section>"""
+
+
 EVIDENCE = [
     ("tc-39-lighthouse-scores.webp", "TC-39 · Lighthouse, mobile, Incognito: 98 · 100 · 100 · 100", 824, 175),
     ("tc-39-lighthouse-metrics.webp", "TC-39 · Metrics: LCP 1.8s, Total Blocking Time 0 ms, CLS 0", 824, 265),
     ("tc-39-lighthouse-first-run-extensions.webp", "TC-39 · The first run scored 63 and Lighthouse flagged browser extensions, so it was re-run clean", 824, 340),
+    ("sec-form-injection-plain-text.webp", "Security · Malicious input sent through the contact form shows as plain text and was filed as spam automatically", 993, 368),
     ("tc-34-whatsapp-preview.webp", "TC-34 · Link preview in WhatsApp: title, description and image", 876, 260),
     ("tc-26-copy-email.webp", "TC-26 · Copy email on a real Galaxy A32: 'Copied' on the page and in Android", 540, 940),
     ("tc-27-email-link-open-with.webp", "TC-27 · Email link on a real Galaxy A32 opens the mail app chooser", 540, 700),
@@ -213,6 +245,7 @@ page = f"""<!doctype html>
           <li><a href="#method">Method</a></li>
           <li><a href="#devices">Devices</a></li>
           <li><a href="#issues">Issues</a></li>
+          <li><a href="#security">Security</a></li>
           <li><a href="#evidence">Evidence</a></li>
           <li><a href="#cases">All cases</a></li>
           <li><a href="/">← Portfolio</a></li>
@@ -302,6 +335,8 @@ page = f"""<!doctype html>
         </div>
       </div>
     </section>
+
+{security_section()}
 
     <section class="section" id="evidence" aria-labelledby="evidence-title">
       <div class="container">

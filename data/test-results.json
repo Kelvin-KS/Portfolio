@@ -2318,5 +2318,79 @@
    "foundBy": "Kelvin (visual comparison across pages and devices)",
    "status": "fixed"
   }
+ },
+ "security": {
+  "date": "2026-10-01",
+  "summary": "Static site with no logins, no database and no third-party JavaScript, which already removes most of the OWASP Top 10 attack surface. Every check below passed; nothing needed fixing.",
+  "checks": [
+   {
+    "owasp": "A02 Security Misconfiguration",
+    "check": "Hidden files reachable on the live site",
+    "method": "Requested 12 sensitive paths (.git, .env, private CV data, build tools, test data)",
+    "result": "All return 404; only the public/ folder is published",
+    "status": "pass"
+   },
+   {
+    "owasp": "A02 Security Misconfiguration",
+    "check": "Security headers on every page, including the 404 page",
+    "method": "Read the live response headers",
+    "result": "Content-Security-Policy, X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy and Permissions-Policy all present",
+    "status": "pass"
+   },
+   {
+    "owasp": "A04 Cryptographic Failures",
+    "check": "HTTPS only",
+    "method": "Requested the site over plain HTTP",
+    "result": "301 redirect to HTTPS; HSTS for a year with includeSubDomains and preload",
+    "status": "pass"
+   },
+   {
+    "owasp": "A05 Injection (XSS)",
+    "check": "Strict Content Security Policy",
+    "method": "Reviewed the policy",
+    "result": "Scripts, styles, fonts and form submissions are restricted to the site itself; no inline scripts, plugins or framing. The policy already blocked one injected script in practice (F-02)",
+    "status": "pass"
+   },
+   {
+    "owasp": "A05 Injection (XSS)",
+    "check": "Unsafe HTML insertion in the site's code",
+    "method": "Searched all scripts for innerHTML, outerHTML, insertAdjacentHTML, document.write, eval and new Function",
+    "result": "None used; dynamic text is set with textContent",
+    "status": "pass"
+   },
+   {
+    "owasp": "A05 Injection",
+    "check": "Malicious input through the contact form",
+    "method": "Submitted script tags, an onerror image, a javascript: link, template expressions ({{7*7}}, ${7*7}) and a SQL-style string",
+    "result": "Stored and displayed as plain text, nothing executed or evaluated, and the message was automatically filed as spam so it never reached the inbox",
+    "status": "pass",
+    "evidence": "sec-form-injection-plain-text.webp"
+   },
+   {
+    "owasp": "Spam & abuse",
+    "check": "Bot submission through the hidden honeypot field",
+    "method": "Submitted the form with the honeypot field filled in",
+    "result": "Discarded entirely: not delivered, not even listed as spam",
+    "status": "pass"
+   },
+   {
+    "owasp": "A03 Software Supply Chain Failures",
+    "check": "Third-party code and requests",
+    "method": "Listed every external host the pages load",
+    "result": "No third-party JavaScript. Fonts are self-hosted (SIL OFL), so pages make no requests to other servers",
+    "status": "pass"
+   },
+   {
+    "owasp": "A02 / data exposure",
+    "check": "Secrets and private data in the public GitHub repository",
+    "method": "Scanned all commits for phone numbers, referee details, student IDs, API tokens, payment keys, private keys and passwords; extracted the text of every historical CV PDF",
+    "result": "None found in any commit or PDF version; private files have never been committed",
+    "status": "pass"
+   }
+  ],
+  "notes": [
+   "Side effect found: Netlify's spam filter may also file genuine messages that contain code as spam, so the spam list is checked regularly.",
+   "Out of scope: denial-of-service and rate limiting, and the TLS and platform configuration managed by Netlify."
+  ]
  }
 }

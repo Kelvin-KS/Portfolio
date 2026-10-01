@@ -33,6 +33,7 @@
           <li><a href="#method">Method</a></li>
           <li><a href="#devices">Devices</a></li>
           <li><a href="#issues">Issues</a></li>
+          <li><a href="#security">Security</a></li>
           <li><a href="#evidence">Evidence</a></li>
           <li><a href="#cases">All cases</a></li>
           <li><a href="/">← Portfolio</a></li>
@@ -214,6 +215,66 @@
       </div>
     </section>
 
+<section class="section" id="security" aria-labelledby="security-title">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Security checks</p>
+          <h2 id="security-title">Tested against the OWASP Top 10</h2>
+          <p class="section-intro">Static site with no logins, no database and no third-party JavaScript, which already removes most of the OWASP Top 10 attack surface. Every check below passed; nothing needed fixing. Checked 2026-10-01: 9 of 9 passed.</p>
+        </header>
+        <div class="table-wrap"><table class="cases security">
+          <thead><tr><th scope="col">OWASP area</th><th scope="col">Check</th><th scope="col">Result</th><th scope="col">Status</th></tr></thead>
+          <tbody><tr>
+            <td class="mono">A02 Security Misconfiguration</td>
+            <td><strong>Hidden files reachable on the live site</strong><span class="scope">Requested 12 sensitive paths (.git, .env, private CV data, build tools, test data)</span></td>
+            <td class="note">All return 404; only the public/ folder is published</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">A02 Security Misconfiguration</td>
+            <td><strong>Security headers on every page, including the 404 page</strong><span class="scope">Read the live response headers</span></td>
+            <td class="note">Content-Security-Policy, X-Frame-Options DENY, X-Content-Type-Options nosniff, Referrer-Policy and Permissions-Policy all present</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">A04 Cryptographic Failures</td>
+            <td><strong>HTTPS only</strong><span class="scope">Requested the site over plain HTTP</span></td>
+            <td class="note">301 redirect to HTTPS; HSTS for a year with includeSubDomains and preload</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">A05 Injection (XSS)</td>
+            <td><strong>Strict Content Security Policy</strong><span class="scope">Reviewed the policy</span></td>
+            <td class="note">Scripts, styles, fonts and form submissions are restricted to the site itself; no inline scripts, plugins or framing. The policy already blocked one injected script in practice (F-02)</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">A05 Injection (XSS)</td>
+            <td><strong>Unsafe HTML insertion in the site&#x27;s code</strong><span class="scope">Searched all scripts for innerHTML, outerHTML, insertAdjacentHTML, document.write, eval and new Function</span></td>
+            <td class="note">None used; dynamic text is set with textContent</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">A05 Injection</td>
+            <td><strong>Malicious input through the contact form</strong><span class="scope">Submitted script tags, an onerror image, a javascript: link, template expressions ({{7*7}}, ${7*7}) and a SQL-style string</span></td>
+            <td class="note">Stored and displayed as plain text, nothing executed or evaluated, and the message was automatically filed as spam so it never reached the inbox</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">Spam &amp; abuse</td>
+            <td><strong>Bot submission through the hidden honeypot field</strong><span class="scope">Submitted the form with the honeypot field filled in</span></td>
+            <td class="note">Discarded entirely: not delivered, not even listed as spam</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">A03 Software Supply Chain Failures</td>
+            <td><strong>Third-party code and requests</strong><span class="scope">Listed every external host the pages load</span></td>
+            <td class="note">No third-party JavaScript. Fonts are self-hosted (SIL OFL), so pages make no requests to other servers</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr><tr>
+            <td class="mono">A02 / data exposure</td>
+            <td><strong>Secrets and private data in the public GitHub repository</strong><span class="scope">Scanned all commits for phone numbers, referee details, student IDs, API tokens, payment keys, private keys and passwords; extracted the text of every historical CV PDF</span></td>
+            <td class="note">None found in any commit or PDF version; private files have never been committed</td>
+            <td><span class="chip chip--pass">Pass</span></td>
+          </tr></tbody>
+        </table></div>
+        <ul class="sec-notes"><li>Side effect found: Netlify&#x27;s spam filter may also file genuine messages that contain code as spam, so the spam list is checked regularly.</li><li>Out of scope: denial-of-service and rate limiting, and the TLS and platform configuration managed by Netlify.</li></ul>
+      </div>
+    </section>
+
     <section class="section" id="evidence" aria-labelledby="evidence-title">
       <div class="container">
         <header class="section-head">
@@ -232,6 +293,10 @@
 <figure class="evidence">
         <img src="/assets/evidence/tc-39-lighthouse-first-run-extensions.webp" alt="TC-39 · The first run scored 63 and Lighthouse flagged browser extensions, so it was re-run clean" width="824" height="340" loading="lazy" decoding="async">
         <figcaption>TC-39 · The first run scored 63 and Lighthouse flagged browser extensions, so it was re-run clean</figcaption>
+      </figure>
+<figure class="evidence">
+        <img src="/assets/evidence/sec-form-injection-plain-text.webp" alt="Security · Malicious input sent through the contact form shows as plain text and was filed as spam automatically" width="993" height="368" loading="lazy" decoding="async">
+        <figcaption>Security · Malicious input sent through the contact form shows as plain text and was filed as spam automatically</figcaption>
       </figure>
 <figure class="evidence">
         <img src="/assets/evidence/tc-34-whatsapp-preview.webp" alt="TC-34 · Link preview in WhatsApp: title, description and image" width="876" height="260" loading="lazy" decoding="async">
