@@ -123,7 +123,7 @@ if private:
             "PORTFOLIO": portfolio_item(), "PORTFOLIO_URL": html.escape(portfolio),
             "REFBLOCK": "",  # the referees page follows, so no section here
         }, OUT / "Kelvin-Sakyi-CV-pack.pdf")
-        pack = OUT / "Kelvin Sakyi - CV and Referees.pdf"
+        pack = OUT / "Kelvin Sakyi - CV and References.pdf"
         subprocess.run(["pdfunite", str(OUT / "Kelvin-Sakyi-CV-pack.pdf"),
                         str(OUT / "Kelvin-Sakyi-References-two.pdf"), str(pack)], check=True)
         print("wrote", pack.relative_to(ROOT))
