@@ -70,6 +70,9 @@ def references_html(refs):
     return "\n  ".join(blocks)
 
 
+REFS_ON_REQUEST = '<div><h2><svg class="ic"><use href="#i-users"/></svg>Referees</h2><p>Available on request.</p></div>'
+
+
 def to_pdf(template_name, replacements, out_pdf):
     page = (CV / template_name).read_text().replace("{{ICONS}}", ICONS)
     for key, value in replacements.items():
@@ -90,7 +93,7 @@ def to_pdf(template_name, replacements, out_pdf):
 
 to_pdf("template.html", {
     "PHONE": "", "COMPANY": "Remote software &amp; design company", "PORTFOLIO": portfolio_item(),
-    "PORTFOLIO_URL": html.escape(portfolio), "REFNOTE": "Available on request.",
+    "PORTFOLIO_URL": html.escape(portfolio), "REFBLOCK": REFS_ON_REQUEST,
 }, ROOT / "public" / "assets" / "Kelvin-Sakyi-CV.pdf")
 
 if private:
@@ -98,7 +101,7 @@ if private:
         "PHONE": phone_items(private["phone"]),
         "COMPANY": html.escape(private["company"]),
         "PORTFOLIO": portfolio_item(),
-        "PORTFOLIO_URL": html.escape(portfolio), "REFNOTE": "Available on request.",
+        "PORTFOLIO_URL": html.escape(portfolio), "REFBLOCK": REFS_ON_REQUEST,
     }, OUT / "Kelvin-Sakyi-CV-private.pdf")
     if private.get("references"):
         to_pdf("references-template.html", {
@@ -118,7 +121,7 @@ if private:
         to_pdf("template.html", {
             "PHONE": phone_items(private["phone"]), "COMPANY": html.escape(private["company"]),
             "PORTFOLIO": portfolio_item(), "PORTFOLIO_URL": html.escape(portfolio),
-            "REFNOTE": "Two referees, with contact details, on the last page.",
+            "REFBLOCK": "",  # the referees page follows, so no section here
         }, OUT / "Kelvin-Sakyi-CV-pack.pdf")
         pack = OUT / "Kelvin Sakyi - CV and Referees.pdf"
         subprocess.run(["pdfunite", str(OUT / "Kelvin-Sakyi-CV-pack.pdf"),
