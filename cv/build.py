@@ -107,7 +107,7 @@ if private:
         }, OUT / "Kelvin-Sakyi-References.pdf")
 
     # Application pack: private CV + both referees in one PDF, for forms that ask for
-    # "CV with two references" in a single file named after the applicant.
+    # "CV with two references (referees)" in a single file named after the applicant.
     both = private.get("references", []) + private.get("personal_references", [])
     if len(both) >= 2:
         to_pdf("references-template.html", {
@@ -120,7 +120,7 @@ if private:
             "PORTFOLIO": portfolio_item(), "PORTFOLIO_URL": html.escape(portfolio),
             "REFNOTE": "Two referees, with contact details, on the last page.",
         }, OUT / "Kelvin-Sakyi-CV-pack.pdf")
-        pack = OUT / "Kelvin Sakyi - CV and References.pdf"
+        pack = OUT / "Kelvin Sakyi - CV and Referees.pdf"
         subprocess.run(["pdfunite", str(OUT / "Kelvin-Sakyi-CV-pack.pdf"),
                         str(OUT / "Kelvin-Sakyi-References-two.pdf"), str(pack)], check=True)
         print("wrote", pack.relative_to(ROOT))
