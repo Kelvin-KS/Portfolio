@@ -105,3 +105,16 @@ if private:
             "PHONE": phone_items(private["phone"]),
             "REFERENCES": references_html(private["references"]),
         }, OUT / "Kelvin-Sakyi-References.pdf")
+
+    # Application pack: private CV + both referees in one PDF, for forms that ask for
+    # "CV with two references" in a single file named after the applicant.
+    both = private.get("references", []) + private.get("personal_references", [])
+    if len(both) >= 2:
+        to_pdf("references-template.html", {
+            "PHONE": phone_items(private["phone"]),
+            "REFERENCES": references_html(both),
+        }, OUT / "Kelvin-Sakyi-References-two.pdf")
+        pack = OUT / "Kelvin Sakyi - CV and References.pdf"
+        subprocess.run(["pdfunite", str(OUT / "Kelvin-Sakyi-CV-private.pdf"),
+                        str(OUT / "Kelvin-Sakyi-References-two.pdf"), str(pack)], check=True)
+        print("wrote", pack.relative_to(ROOT))
