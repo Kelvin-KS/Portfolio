@@ -90,7 +90,7 @@ def to_pdf(template_name, replacements, out_pdf):
 
 to_pdf("template.html", {
     "PHONE": "", "COMPANY": "Remote software &amp; design company", "PORTFOLIO": portfolio_item(),
-    "PORTFOLIO_URL": html.escape(portfolio),
+    "PORTFOLIO_URL": html.escape(portfolio), "REFNOTE": "Available on request.",
 }, ROOT / "public" / "assets" / "Kelvin-Sakyi-CV.pdf")
 
 if private:
@@ -98,7 +98,7 @@ if private:
         "PHONE": phone_items(private["phone"]),
         "COMPANY": html.escape(private["company"]),
         "PORTFOLIO": portfolio_item(),
-        "PORTFOLIO_URL": html.escape(portfolio),
+        "PORTFOLIO_URL": html.escape(portfolio), "REFNOTE": "Available on request.",
     }, OUT / "Kelvin-Sakyi-CV-private.pdf")
     if private.get("references"):
         to_pdf("references-template.html", {
@@ -114,7 +114,13 @@ if private:
             "PHONE": phone_items(private["phone"]),
             "REFERENCES": references_html(both),
         }, OUT / "Kelvin-Sakyi-References-two.pdf")
+        # The CV inside the pack points to the referees instead of saying "available on request".
+        to_pdf("template.html", {
+            "PHONE": phone_items(private["phone"]), "COMPANY": html.escape(private["company"]),
+            "PORTFOLIO": portfolio_item(), "PORTFOLIO_URL": html.escape(portfolio),
+            "REFNOTE": "Two referees, with contact details, on the last page.",
+        }, OUT / "Kelvin-Sakyi-CV-pack.pdf")
         pack = OUT / "Kelvin Sakyi - CV and References.pdf"
-        subprocess.run(["pdfunite", str(OUT / "Kelvin-Sakyi-CV-private.pdf"),
+        subprocess.run(["pdfunite", str(OUT / "Kelvin-Sakyi-CV-pack.pdf"),
                         str(OUT / "Kelvin-Sakyi-References-two.pdf"), str(pack)], check=True)
         print("wrote", pack.relative_to(ROOT))
